@@ -10,15 +10,24 @@ The project is made with the support of Laravel framework, and uses Laravel Sail
 Make sure that:
 - Docker is already installed on your computer
 - Ports **80** and **3306** are not used by any other services - if they are, you can change it with other ports in the .env file
+- Composer is already installed on your computer
+
 
 ### Necessary step
 - Copy the .env.example file into .env file and change any parameter with values that you need
   - N.B.: Before executing the following command, make sure that you must be in the root of the project  
 **`cp .env.example .env`**
 
+
 ### Start docker containers
 Open a terminal in the root of the project and type:  
 **`docker-compose up -d`**
+
+### Install necessary third-part dependecies
+Open a terminal in the root of the project and type:  
+**`composer i`**
+**`npm i && npm run dev`**
+
 
 ---
 
