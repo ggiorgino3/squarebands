@@ -5,14 +5,10 @@ tab-width: 4
 use-tabs: false
 
 enabled:
-  - long_array_syntax
   - strict
-  - unalign_double_arrow
 
 disabled:
   - no_unused_imports
-  - align_double_arrow
-  - short_array_syntax
 
 finder:
   exclude:
