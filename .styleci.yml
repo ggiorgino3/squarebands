@@ -4,8 +4,8 @@ preset: laravel
 tab-width: 4
 use-tabs: false
 
-enabled:
-  - strict
+#enabled:
+#  - strict
 
 disabled:
   - no_unused_imports
