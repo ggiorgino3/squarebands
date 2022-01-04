@@ -18,8 +18,10 @@ class CreateConcertsPhotosTable extends Migration
             'concerts_photos',
             function (Blueprint $table) {
                 $table->id();
-                $table->integer('concert_id');
-                $table->integer('photo_id');
+                $table->unsignedBigInteger('concert_id');
+                $table->foreign('concert_id')->references('id')->on('concerts');
+                $table->unsignedBigInteger('photo_id');
+                $table->foreign('photo_id')->references('id')->on('photos');
                 $table->timestamps();
             }
         );

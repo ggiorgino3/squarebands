@@ -18,8 +18,10 @@ class CreateConcertsVideosTable extends Migration
             'concerts_videos',
             function (Blueprint $table) {
                 $table->id();
-                $table->integer('concert_id');
-                $table->integer('video_id');
+                $table->unsignedBigInteger('concert_id');
+                $table->foreign('concert_id')->references('id')->on('concerts');
+                $table->unsignedBigInteger('video_id');
+                $table->foreign('video_id')->references('id')->on('videos');
                 $table->timestamps();
             }
         );

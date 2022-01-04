@@ -18,8 +18,10 @@ class CreateNewsPhotosTable extends Migration
             'news_photos',
             function (Blueprint $table) {
                 $table->id();
-                $table->integer('news_id');
-                $table->integer('photo_id');
+                $table->unsignedBigInteger('news_id');
+                $table->foreign('news_id')->references('id')->on('news');
+                $table->unsignedBigInteger('photo_id');
+                $table->foreign('photo_id')->references('id')->on('photos');
                 $table->timestamps();
             }
         );
