@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="Greg">
+    <description>Coding standard based on Zend with some additions.</description>
+
+    <rule ref="PSR2" />
+    <rule ref="PEAR">
+        <exclude name="PEAR.Commenting.FileComment.Missing" />
+        <exclude name="PEAR.Commenting.ClassComment.Missing" />
+<!--         <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.ContentAfterBrace" />
+        <exclude name="PEAR.Functions.FunctionDeclaration.ContentAfterBrace" />
+        <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
+        <exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
+        <exclude name="PEAR.WhiteSpace.ScopeClosingBrace.Line" />
+        <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore" /> -->
+    </rule>
+
+</ruleset>
