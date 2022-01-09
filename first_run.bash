@@ -36,3 +36,13 @@ npm run dev
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 sail artisan migrate
+
+echo "DB::table('options')->insert(array('meta_key' => 'band_name', 'meta_value' => 'Dream Theater'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'band_country', 'meta_value' => 'America'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'band_genre', 'meta_value' => 'Progressive Rock / Progressive Metal'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'video_maximum_size', 'meta_value' => '10'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'video_valid_extensions', 'meta_value' => 'avi,mp4'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'photo_maximum_size', 'meta_value' => '3'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'photo_valid_extensions', 'meta_value' => 'png,jpg,jpeg'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'song_maximum_size', 'meta_value' => '10'));" | sail tinker
+echo "DB::table('options')->insert(array('meta_key' => 'song_valid_extensions', 'meta_value' => 'mp3'));" | sail tinker
