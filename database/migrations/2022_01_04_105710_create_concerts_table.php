@@ -23,7 +23,7 @@ class CreateConcertsTable extends Migration
                 $table->string('place_address', 100);
                 $table->string('country_name', 100);
                 $table->string('city_name', 100);
-                $table->datetime('datetime');
+                $table->datetime('datetime'); // YYYY-MM-DD hh:mm:ss
                 $table->time('gate_opening')->nullable();
                 $table->integer('maximum_seating_no')->nullable();
                 $table->text('description')->nullable();
