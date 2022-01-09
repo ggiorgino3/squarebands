@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             [
                 UserSeeder::class,
                 ConcertSeeder::class,
+                ContactSeeder::class,
             ]
         );
     }

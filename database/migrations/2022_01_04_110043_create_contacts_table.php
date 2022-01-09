@@ -21,7 +21,7 @@ class CreateContactsTable extends Migration
                 $table->string('name', 100);
                 $table->string('surname', 100);
                 $table->string('email', 100);
-                $table->integer('phone');
+                $table->string('phone', 25);
                 $table->string('address', 100);
                 $table->string('business_title', 100); // Manager, business man...
 
