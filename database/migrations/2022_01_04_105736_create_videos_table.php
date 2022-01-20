@@ -18,10 +18,10 @@ class CreateVideosTable extends Migration
             'videos',
             function (Blueprint $table) {
                 $table->id();
-                $table->text('uri');
+                $table->string('uri', 300);
                 $table->string('type', 50)->default('local');
                 $table->text('description');
-                $table->string('tags', 100);
+                $table->string('tags', 100)->nullable();
             
                 $table->timestamps();
             }
