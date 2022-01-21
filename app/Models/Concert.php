@@ -13,4 +13,9 @@ class Concert extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }
