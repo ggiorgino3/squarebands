@@ -20,6 +20,7 @@ class CreateSongsTable extends Migration
                 $table->id();
                 $table->text('uri');
                 $table->string('name', 50);
+                $table->string('genre', 50);
                 $table->text('description');
                 $table->string('type', 50)->default('local');
                 $table->string('tags', 100)->nullable();

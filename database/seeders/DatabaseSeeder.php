@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 PhotoSeeder::class,
                 VideoSeeder::class,
+                SongSeeder::class,
                 NewsSeeder::class,
                 ConcertSeeder::class,
                 ConcertPhotoVideoSeeder::class,
