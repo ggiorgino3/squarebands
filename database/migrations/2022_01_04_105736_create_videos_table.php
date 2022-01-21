@@ -22,7 +22,9 @@ class CreateVideosTable extends Migration
                 $table->string('type', 50)->default('local');
                 $table->text('description');
                 $table->string('tags', 100)->nullable();
-            
+
+                $table->foreignId('concert_id')->nullable()->constrained();
+
                 $table->timestamps();
             }
         );

@@ -14,7 +14,7 @@ class CreateConcertsVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create(
+       /*  Schema::create(
             'concerts_videos',
             function (Blueprint $table) {
                 $table->id();
@@ -24,7 +24,7 @@ class CreateConcertsVideosTable extends Migration
                 $table->foreign('video_id')->references('id')->on('videos');
                 $table->timestamps();
             }
-        );
+        ); */
     }
 
     /**

@@ -14,7 +14,7 @@ class CreateNewsPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create(
+        /* Schema::create(
             'news_photos',
             function (Blueprint $table) {
                 $table->id();
@@ -24,7 +24,7 @@ class CreateNewsPhotosTable extends Migration
                 $table->foreign('photo_id')->references('id')->on('photos');
                 $table->timestamps();
             }
-        );
+        ); */
     }
 
     /**
