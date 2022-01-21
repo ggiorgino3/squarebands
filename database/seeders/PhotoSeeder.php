@@ -15,7 +15,7 @@ class PhotoSeeder extends Seeder
     public function run()
     {
         Photo::factory()
-            ->count(10)
+            ->count(50)
             ->create();
     }
 }

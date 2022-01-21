@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\News;
+use App\Models\Photo;
 use Illuminate\Database\Seeder;
 
 class NewsSeeder extends Seeder
@@ -14,8 +15,22 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        News::factory()
-            ->count(15)
+        $news = News::factory()
+            ->count(5)
             ->create();
+
+            $news->each(
+                function ($single_news) {
+                    $photosNotRelatedToConcerts = Photo::whereNull('news_id')
+                        ->whereNull('concert_id')
+                        ->limit(3)
+                        ->get();
+                    $photosNotRelatedToConcerts->each(
+                        function ($photo) use ($single_news) {
+                            $single_news->photos()->save($photo);
+                        }
+                    );
+                }
+            );
     }
 }
