@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\News;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 UserSeeder::class,
+                PhotoSeeder::class,
+                VideoSeeder::class,
+                NewsSeeder::class,
                 ConcertSeeder::class,
+                ConcertPhotoVideoSeeder::class,
                 ContactSeeder::class,
             ]
         );
