@@ -19,9 +19,10 @@ class CreateSongsTable extends Migration
             function (Blueprint $table) {
                 $table->id();
                 $table->text('uri');
-                $table->string('type', 50)->default('local');
+                $table->string('name', 50);
                 $table->text('description');
-                $table->string('tags', 100);
+                $table->string('type', 50)->default('local');
+                $table->string('tags', 100)->nullable();
         
                 $table->timestamps();
             }
