@@ -12,6 +12,7 @@
         <exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
         <exclude name="PEAR.WhiteSpace.ScopeClosingBrace.Line" />
         <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore" /> -->
+        <exclude-pattern>**/vendor/**</exclude-pattern>
     </rule>
 
 </ruleset>

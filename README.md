@@ -32,4 +32,19 @@ Open a terminal in the root of the project and type:
 ---
 
 # Last but not least, click [here](http://127.0.0.1) and visit the Dream Theater CMS
-###### If the website doesn't work, maybe you have changed the app port in the env file, so change the url appending the port at the end of the url!
+###### If the website doesn't work, maybe you have changed the app port in the env file, so change the url appending the port at the end of the url.
+
+---
+
+### Original request
+> Sviluppo di un sito web in Laravel per consentire ad una band musicale di pubblicare notizie, video, musica, album, etc etc. 
+> 
+> In particolare, il sito avrà un lato backend per l'editing dei contenuti con accesso riservato agli amministratori del sito e un frontend per gli utenti (i fan della band) che vedranno i contenuti caricati.
+> 
+> Per delimitare meglio l'ampiezza del progetto, i contenuti da caricare devono essere:  
+> - dati e info sulla band
+> - video della band
+> - canzoni della band
+> - info su concerti passati e futuri
+> - immagini della band
+> - contatti

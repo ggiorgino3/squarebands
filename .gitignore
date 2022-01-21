@@ -24,4 +24,4 @@ Homestead.json
 docker-compose.override.yml
 .idea
 .vscode
-_ide_helper.php
+_ide_helper*.php
