@@ -11,21 +11,23 @@
     <div class="back">
         <div class="div-center">
 
-
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('administration.login') }}">
+                    <form method="POST" action="{{ route('administration.loginPost') }}">
                         @csrf
                         <div class="form-group my-2">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
                         <div class="form-group my-2">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
                                 placeholder="Password">
                         </div>
+                        @if($errors->any())
+                            {!! implode('', $errors->all('<div>:message</div>')) !!}
+                        @endif
                         <button type="submit" class="btn btn-primary mt-4 w-100">Login</button>
                         <hr />
                         <button type="button" class="btn btn-link float-end">Forget your password?</button>

@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 //phpcs:disable
-Route::view('/', "pages.homepage");
+Route::view('/', "pages.homepage")->name("home");
 Route::view('/concerts', 'pages.concerts');
 Route::view('/news', 'pages.news');
 Route::view('/photo_gallery', 'pages.photos');
@@ -21,9 +22,21 @@ Route::prefix('administration')->group(
             'pages.administration.login',
         )->name('administration.login');
         
+        Route::post(
+            '/login',
+            [LoginController::class, "attempt"]
+        )->name('administration.loginPost');
+        
+        Route::get(
+            '/dashboard',
+            function () {
+                return redirect('/');
+            }
+        );
+
         Route::middleware(['auth'])->group( // Authorized routes
             function () {
-                Route::view('/', 'pages.administration.dashboard');
+                Route::view('/dashboard', 'pages.administration.dashboard')->name("administration.homepage");
                 Route::view('/informations', 'pages.administration.informations');
                 Route::view('/gallery', 'pages.administration.gallery');
                 Route::view('/videos', 'pages.administration.videos');
