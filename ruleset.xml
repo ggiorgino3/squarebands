@@ -13,6 +13,7 @@
         <exclude name="PEAR.WhiteSpace.ScopeClosingBrace.Line" />
         <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore" /> -->
         <exclude-pattern>**/vendor/**</exclude-pattern>
+        <exclude-pattern>**ide_helper**</exclude-pattern>
     </rule>
 
 </ruleset>
