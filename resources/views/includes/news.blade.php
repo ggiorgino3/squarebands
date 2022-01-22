@@ -1,4 +1,4 @@
-<div class="news">
+<div class="row news">
     <h1 class="text-center">
         News
     </h1>
