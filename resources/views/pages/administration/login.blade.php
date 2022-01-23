@@ -9,7 +9,7 @@
 
 <body>
     <div class="back">
-        <div class="div-center">
+        <div class="div-center overflow-hidden">
 
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>

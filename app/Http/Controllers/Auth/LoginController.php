@@ -13,9 +13,9 @@ class LoginController extends Controller
 
     public function login()
     {
-        return view('auth.login');
+        return Auth::check() ? redirect()->route('administration.homepage') : view('auth.login');
     }
-
+    
     public function attempt(Request $request)
     {
 

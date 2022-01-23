@@ -17,11 +17,12 @@ Route::view('/informations', 'pages.informations');
 
 Route::prefix('administration')->group(
     function () {
-        Route::view(
-            '/login',
-            'pages.administration.login',
-        )->name('administration.login');
         
+        Route::get(
+            '/login',
+            [LoginController::class, "login"]
+        )->name('administration.login');
+
         Route::post(
             '/login',
             [LoginController::class, "attempt"]
