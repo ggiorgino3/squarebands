@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-//phpcs:ignore 
-class CreateSongsTable extends Migration
+class CreateAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,17 +14,21 @@ class CreateSongsTable extends Migration
     public function up()
     {
         Schema::create(
-            'songs',
+            'albums',
             function (Blueprint $table) {
                 $table->id();
-                $table->text('uri');
-                $table->string('name', 50);
-                $table->string('genre', 50);
+                $table->string('title');
                 $table->text('description');
-                $table->string('type', 50)->default('local');
-                $table->string('tags', 100)->nullable();
-                $table->foreignId('album_id')->nullable()->constrained();
-
+                $table->enum(
+                    'genre',
+                    array(
+                        'Progressive Metal',
+                        'Hard Rock',
+                        'Fusion'
+                    )
+                );
+                $table->foreignId('photo_id')->nullable()->constrained();
+                $table->date('publish_date')->nullable();
                 $table->timestamps();
             }
         );
@@ -38,6 +41,6 @@ class CreateSongsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs');
+        Schema::dropIfExists('albums');
     }
 }
