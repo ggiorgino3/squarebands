@@ -1,7 +1,7 @@
 <!-- Bootstrap row -->
 <div class="row" id="body-row">
     <!-- Sidebar -->
-    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+    <div id="sidebar-container" class="scrollbar_of sidebar-expanded d-none d-md-block">
         <!-- Bootstrap List Group -->
         <ul class="list-group rounded-0">
             @foreach ($menus as $title => $submenus)
@@ -20,7 +20,7 @@
         </ul><!-- List Group END-->
     </div><!-- sidebar-container END -->
     <!-- MAIN -->
-    <div class="col p-4">     
+    <div class="col p-4 scrollbar_of">     
         <div id="main">
             @yield('content')
         </div>
