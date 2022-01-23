@@ -1,1 +1,4 @@
-<h1>Band Informations page</h1>
+@extends('layouts.base_admin')
+@section('content')
+    <h1>Bands informations</h1>
+@endsection

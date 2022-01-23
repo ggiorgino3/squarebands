@@ -28,14 +28,25 @@ Route::prefix('administration')->group(
             [LoginController::class, "attempt"]
         )->name('administration.loginPost');
         
+        // Redirects
+
+        /*       Route::get(
+                    '/dashboard',
+                    function () {
+                        return redirect('/');
+                    }
+                );
+        */
         Route::get(
-            '/dashboard',
+            '/',
             function () {
-                return redirect('/');
+                return redirect('/administration/dashboard');
             }
         );
-
-        Route::middleware(['auth'])->group( // Authorized routes
+        
+        // Authorized routes
+        
+        Route::middleware(['auth'])->group( 
             function () {
                 Route::view('/dashboard', 'pages.administration.dashboard')->name("administration.homepage");
                 Route::view('/informations', 'pages.administration.informations');

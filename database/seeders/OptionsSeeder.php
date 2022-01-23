@@ -34,9 +34,5 @@ class OptionsSeeder extends Seeder
         }
 
         DB::table('options')->insert($options);
-        DB::table('options')->insert(
-            array('meta_key' => 'test',
-            'meta_value' => 'test')
-        );
     }
 }
