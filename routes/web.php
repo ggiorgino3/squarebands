@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\SongController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 //phpcs:disable
@@ -46,14 +50,25 @@ Route::prefix('administration')->group(
         
         // Authorized routes
         
-        Route::middleware(['auth'])->group( 
+        Route::middleware(['auth'])->group(
             function () {
+
+               
                 Route::view('/dashboard', 'pages.administration.dashboard')->name("administration.homepage");
-                Route::view('/informations', 'pages.administration.informations');
+                /* Route::view('/informations', 'pages.administration.informations');
                 Route::view('/gallery', 'pages.administration.gallery');
                 Route::view('/videos', 'pages.administration.videos');
                 Route::view('/songs', 'pages.administration.songs');
-                Route::view('/concerts', 'pages.administration.concerts');
+                Route::view('/concerts', 'pages.administration.concerts'); */
+
+                Route::resources(
+                    [
+                        'photos' => PhotoController::class,
+                        'videos' => VideoController::class,
+                        'songs' => SongController::class,
+                        'concerts' => ConcertController::class
+                    ]
+                );
             }
         );
     }

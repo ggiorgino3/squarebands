@@ -24,6 +24,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(['pages.concerts','pages.homepage','pages.news','pages.photos','pages.videos'], "App\View\Composers\BaseComposer");
-        view()->composer(['pages.administration.*'], "App\View\Composers\SidebarAdminComposer");
+        view()->composer(['photos.*', "concerts.*", "videos.*", "songs.*", 'pages.administration.*', ], "App\View\Composers\SidebarAdminComposer");
     }
 }

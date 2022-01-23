@@ -32,7 +32,7 @@ class SidebarAdminComposer
                     "title" => 'All concerts',
                 ),
                 array(
-                    "url" => "$this->base_url/add_concert",
+                    "url" => "$this->base_url/concerts/create",
                     "icon" => 'plus',
                     "title" => 'Add a concert',
                 ),
@@ -44,7 +44,7 @@ class SidebarAdminComposer
                      "title" => 'All songs',
                  ),
                  array(
-                     "url" => "$this->base_url/add_song",
+                     "url" => "$this->base_url/songs/create",
                      "icon" => 'plus',
                      "title" => 'Add a song',
                  ),
@@ -56,7 +56,7 @@ class SidebarAdminComposer
                      "title" => 'All photos',
                  ),
                  array(
-                     "url" => "$this->base_url/add_photo",
+                     "url" => "$this->base_url/photos/create",
                      "icon" => 'plus',
                      "title" => 'Add a photo',
                  ),
@@ -68,7 +68,7 @@ class SidebarAdminComposer
                      "title" => 'All videos',
                  ),
                  array(
-                     "url" => "$this->base_url/add_video",
+                     "url" => "$this->base_url/videos/create",
                      "icon" => 'plus',
                      "title" => 'Add a video',
                  ),
@@ -80,7 +80,7 @@ class SidebarAdminComposer
                      "title" => 'All albums',
                  ),
                  array(
-                     "url" => "$this->base_url/add_album",
+                     "url" => "$this->base_url/albums/create",
                      "icon" => 'plus',
                      "title" => 'Add an album',
                  ),
@@ -92,7 +92,7 @@ class SidebarAdminComposer
                      "title" => 'All news',
                  ),
                  array(
-                     "url" => "$this->base_url/add_news",
+                     "url" => "$this->base_url/news/create",
                      "icon" => 'plus',
                      "title" => 'Add a news',
                  ),
@@ -104,7 +104,7 @@ class SidebarAdminComposer
                      "title" => 'All contacts',
                  ),
                  array(
-                     "url" => "$this->base_url/add_contact",
+                     "url" => "$this->base_url/contacts/create",
                      "icon" => 'plus',
                      "title" => 'Add a contact',
                  ),
@@ -116,7 +116,7 @@ class SidebarAdminComposer
                      "title" => 'All infos',
                  ),
                  array(
-                     "url" => "$this->base_url/add_info",
+                     "url" => "$this->base_url/informations/create",
                      "icon" => 'plus',
                      "title" => 'Add an information',
                  ),
