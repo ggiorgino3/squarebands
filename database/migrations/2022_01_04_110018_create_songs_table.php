@@ -18,10 +18,17 @@ class CreateSongsTable extends Migration
             'songs',
             function (Blueprint $table) {
                 $table->id();
-                $table->text('uri');
                 $table->string('name', 50);
-                $table->string('genre', 50);
                 $table->text('description');
+                $table->text('uri');
+                $table->enum(
+                    'genre',
+                    array(
+                        'Progressive Metal',
+                        'Hard Rock',
+                        'Fusion'
+                    )
+                );                
                 $table->string('type', 50)->default('local');
                 $table->string('tags', 100)->nullable();
                 $table->foreignId('album_id')->nullable()->constrained();

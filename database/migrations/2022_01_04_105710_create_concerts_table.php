@@ -19,6 +19,7 @@ class CreateConcertsTable extends Migration
             function (Blueprint $table) {
                 $table->id();
                 $table->string('name', 100);
+                $table->text('description')->nullable();
                 $table->string('place_name', 100); // Stadium name, theater...
                 $table->string('place_address', 100);
                 $table->string('country_name', 100);
@@ -26,7 +27,6 @@ class CreateConcertsTable extends Migration
                 $table->datetime('datetime'); // YYYY-MM-DD hh:mm:ss
                 $table->time('gate_opening')->nullable();
                 $table->integer('maximum_seating_no')->nullable();
-                $table->text('description')->nullable();
                 $table->text('ticket_link')->nullable();
                 $table->timestamps();
             }
