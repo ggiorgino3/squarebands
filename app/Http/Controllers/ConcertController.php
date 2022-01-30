@@ -14,7 +14,7 @@ class ConcertController extends Controller
      */
     public function index()
     {
-        return view('pages.administration.concerts')->withConcerts(Concert::all());
+        return view('pages.administration.concerts.index')->withConcerts(Concert::all());
     }
 
     /**
@@ -24,24 +24,24 @@ class ConcertController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.administration.concerts.create')->withPostRoute(route('concerts.create'))->withElementTitle('concert');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,7 +52,7 @@ class ConcertController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -63,8 +63,8 @@ class ConcertController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,7 +75,7 @@ class ConcertController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
