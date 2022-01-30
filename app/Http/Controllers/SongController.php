@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
+use App\Models\Song;
 use Illuminate\Http\Request;
 
 class SongController extends Controller
@@ -13,7 +15,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        return view('pages.administration.songs');
+        return view('pages.administration.songs.index')->withSongs(Song::all());
     }
 
     /**
@@ -23,7 +25,10 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.administration.songs.create')
+                ->withPostRoute(route('songs.create'))
+                ->withElementTitle('song')
+                ->withAlbums(Album::all());
     }
 
     /**
