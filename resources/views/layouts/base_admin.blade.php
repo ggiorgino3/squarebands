@@ -3,20 +3,27 @@
 
 <head>
     @include('includes.head_admin')
+    @stack('styles')
 </head>
 
 <body>
 
-    {{--      
-        <header class="row">
-            @include('includes.header')
-        </header> 
-    --}}
-        
-    @include('includes.sidebar')
+    <div class="row" id="body-row">
+        <!-- MAIN -->
+        @include('includes.sidebar')
 
+        <div class="col p-4 scrollbar_of">
 
-        
+            <div id="main">
+
+                @yield('content')
+
+            </div>
+
+        </div><!-- Main Col END -->
+
+    </div><!-- body-row END -->
+
     <footer class="row text-center fixed-bottom">
         @include('includes.footer')
     </footer>
