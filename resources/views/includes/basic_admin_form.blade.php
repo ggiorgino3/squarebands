@@ -3,16 +3,19 @@
 @endpush
 
 <form action="{{ $post_route }}" method="POST">
+    @csrf
     <h1>
-        Add new {{ $element_title }}
+        Add new {{ $element['title'] }}
     </h1>
     <div class="container">
-        
+        @if($errors->any())
+            {!! implode('', $errors->all('<div>:message</div>')) !!}
+        @endif
         <div class="form-group required">
             <div class="row mx-0 my-2">
-                <h5 class=" px-0"><label for="{{ $element_title }}_title">{{ ucfirst($element_title) }} name</label> </h5>
-                <input required width="100" class="px-1" type="text" name="{{ $element_title }}_title"
-                    id="{{ $element_title }}_title" placeholder="{{ ucfirst($element_title) . ' name...' }} ">
+                <h5 class=" px-0"><label for="{{ $element['id'] }}">{{ ucfirst($element['title']) }} name</label> </h5>
+                <input required width="100" class="px-1" type="text" name="{{ $element['id'] }}"
+                    id="{{ $element['id'] }}" placeholder="{{ ucfirst($element['title']) . ' name...' }} ">
             </div>
             <div class="my-2">
                 <h5 ><label for="description">Description</label> </h5>
@@ -20,9 +23,9 @@
             </div>
         </div>
         @yield("form_content")
-
+       
         <div class="text-end py-2">
-            <button class="btn btn-outline-success" type="submit">Save {{ $element_title }}</button>
+            <button class="btn btn-outline-success" type="submit">Save {{ $element['title'] }}</button>
         </div>
     </div>
 </form>

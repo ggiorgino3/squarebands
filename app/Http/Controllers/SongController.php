@@ -27,7 +27,7 @@ class SongController extends Controller
     {
         return view('pages.administration.songs.create')
                 ->withPostRoute(route('songs.create'))
-                ->withElementTitle('song')
+                ->withElement(array('id' => 'name', 'title' => 'song'))
                 ->withAlbums(Album::all());
     }
 
