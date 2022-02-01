@@ -14,19 +14,21 @@
                 <option value="Fusion">Fusion</option>
             </select>
         </div>
+    </div>
+    <div class="form-group">
         <div class="my-4">
             <h5><label for="album">Album</label></h5>
-            <select required name="album" id="album">
+            <select  name="album" id="album">
                 <option value="">-</option>
                 @foreach ($albums as $id => $album_name)
                     <option value="{{ $id }}">{{ $album_name }}</option>
                 @endforeach
             </select>
         </div>
-    </div>
-    <div class="my-4 row">
-        <h5><label for="tags">Song Tags</label> </h5>
-        <input type="text" name="tags" id="tags" placeholder="Separate each tag with a comma" />
+        <div class="my-4 row">
+            <h5><label for="tags">Song Tags</label> </h5>
+            <input type="text" name="tags" id="tags" placeholder="Separate each tag with a comma" />
+        </div>
     </div>
 
 @endsection
