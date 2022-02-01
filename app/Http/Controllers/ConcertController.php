@@ -76,7 +76,7 @@ class ConcertController extends Controller
         $new_concert->save();
 
         Session::flash('message', 'New concert successfully created!');
-        return redirect()->route('concerts.create');
+        return redirect()->route('concerts.index');
     }
 
 
