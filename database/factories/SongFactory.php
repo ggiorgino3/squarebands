@@ -15,7 +15,7 @@ class SongFactory extends Factory
     {
         return [
             'uri' => 'https://source.unsplash.com/random',
-            'name' => $this->faker->sentence(rand(1, 5)),
+            'name' => $this->faker->sentence(rand(1, 3)),
             'description' => $this->faker->text(50),
             'genre' => $this->faker->randomElement(
                 array(

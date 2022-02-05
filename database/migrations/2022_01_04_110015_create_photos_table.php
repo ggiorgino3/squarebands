@@ -18,6 +18,10 @@ class CreatePhotosTable extends Migration
             'photos',
             function (Blueprint $table) {
                 $table->id();
+
+                $table->string('name', 100);
+                $table->text('description');
+                $table->string('caption', 100);
                 $table->string('uri', 100);
 
                 $table->foreignId('concert_id')->nullable()->constrained();

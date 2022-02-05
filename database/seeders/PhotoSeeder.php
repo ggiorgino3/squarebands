@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Photo;
+use Http;
 use Illuminate\Database\Seeder;
 
 class PhotoSeeder extends Seeder
@@ -14,8 +15,22 @@ class PhotoSeeder extends Seeder
      */
     public function run()
     {
-        Photo::factory()
-            ->count(50)
-            ->create();
+        $url = "https://picsum.photos/v2/list";
+        $res = Http::get($url);
+
+        $photos = $res->json();
+        $new_photos = array();
+
+        foreach ($photos as $photo) {
+            $temp = array(
+            'uri' => $photo['download_url'],
+            'name' => $photo['author'],
+            'description' => $photo['author'],
+            'caption' => $photo['author'],
+            );
+            $new_photos[] = $temp;
+
+        }
+        Photo::insert($new_photos);
     }
 }
