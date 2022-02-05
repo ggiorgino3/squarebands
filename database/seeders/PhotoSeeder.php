@@ -23,13 +23,12 @@ class PhotoSeeder extends Seeder
 
         foreach ($photos as $photo) {
             $temp = array(
-            'uri' => $photo['download_url'],
-            'name' => $photo['author'],
-            'description' => $photo['author'],
-            'caption' => $photo['author'],
+                'uri' => $photo['download_url'],
+                'name' => $photo['author'],
+                'description' => $photo['author'],
+                'caption' => $photo['author'],
             );
             $new_photos[] = $temp;
-
         }
         Photo::insert($new_photos);
     }

@@ -2,7 +2,7 @@
     <link href="{{ asset('css/admin_form.css') }}" rel="stylesheet">
 @endpush
 
-<form action="{{ $post_route }}" method="POST">
+<form action="{{ $post_route }}" method="POST" enctype="multipart/form-data">
     @csrf
     <h1>
         Add new {{ $element['title'] }}
