@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             function (Blueprint $table) {
                 $table->id();
                 $table->string('title', 150);
-                $table->text('content');
+                $table->text('description');
                 $table->enum('status', ['publish', 'draft', 'trash']);
 
                 $table->timestamps();

@@ -15,7 +15,7 @@ class NewsFactory extends Factory
     {
         return [
             'title' => $this->faker->text(50),
-            'content' => $this->faker->text(500),
+            'description' => $this->faker->text(500),
             'status' => $this->faker->randomElement(['publish', 'draft', 'trash']),
         ];
     }

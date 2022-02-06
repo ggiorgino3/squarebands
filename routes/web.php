@@ -4,6 +4,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\VideoController;
@@ -68,6 +69,7 @@ Route::prefix('administration')->group(
                         'photos' => PhotoController::class,
                         'videos' => VideoController::class,
                         'songs' => SongController::class,
+                        'news' => NewsController::class,
                         'concerts' => ConcertController::class,
                         'albums' => AlbumController::class
                     ]
