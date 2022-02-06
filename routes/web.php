@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\VideoController;
+use App\Models\Album;
 use Illuminate\Support\Facades\Route;
 
 //phpcs:disable
@@ -66,7 +68,8 @@ Route::prefix('administration')->group(
                         'photos' => PhotoController::class,
                         'videos' => VideoController::class,
                         'songs' => SongController::class,
-                        'concerts' => ConcertController::class
+                        'concerts' => ConcertController::class,
+                        'albums' => AlbumController::class
                     ]
                 );
             }

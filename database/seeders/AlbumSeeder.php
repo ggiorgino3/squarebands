@@ -27,7 +27,7 @@ class AlbumSeeder extends Seeder
                 'publish_date' => '2009-06-23'
             ),
             array(
-                'name' => "The Astonishing",
+                'title' => "The Astonishing",
                 "description" => $this->faker->text(),
                 'genre' => "Progressive Metal",
                 'publish_date' => '2016-01-29'
