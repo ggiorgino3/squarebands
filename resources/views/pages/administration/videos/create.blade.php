@@ -1,5 +1,5 @@
 @extends('layouts.base_admin')
 @section('content')
-    @include('includes.photos.supplementary_fields')
+    @include('includes.videos.supplementary_fields')
 @endsection
 

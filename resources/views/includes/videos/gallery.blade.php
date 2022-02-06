@@ -22,9 +22,9 @@
                 @for ($j = 0; $j < count($videos); $j++)
                     <div class="col-lg-4 mb-4 mb-lg-0 container">
                         <video class="w-100 rounded" loading="lazy" preload="metadata">
-                            <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                            <source src="{{ $videos[$j]->uri }}#t=4" type="video/mp4">
                           </video>
-                        {{-- <img  src="{{ $videos[$j]->uri }}" class="w-100 image shadow-1-strong rounded mb-4"
+                        {{-- <img   class="w-100 image shadow-1-strong rounded mb-4"
                         alt="{{ $videos[$j]->name }}" /> --}}
                         <div class="overlay m-0 row">
                             <a class="col-6 p-0" href="{{ route('videos.show', $videos[$j]->id) }}"><div class="" >View</div></a>
@@ -35,7 +35,7 @@
                 @endfor
             </div>
         <div class="text-center">
-            {!! $videos->links() !!}
+            {{ $videos->links() }}
         </div>
     </div>
 </div>

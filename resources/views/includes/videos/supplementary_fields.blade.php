@@ -2,12 +2,8 @@
 @section('form_content')
     <div class="form-group required">
         <div class="my-4">
-            <h5><label for="caption">Caption</label> </h5>
-            <input required type="text" name="caption" id="caption" />
-        </div>
-        <div class="my-4">
-            <h5><label for="photo">Photo</label> </h5>
-            <input required class="required" type="file" name="photo" id="photo" />
+            <h5><label for="video">Video</label> </h5>
+            <input required class="required" type="file" name="video" id="video" />
         </div>
     </div>
     <div class="form-group">
@@ -20,14 +16,5 @@
                 @endforeach
             </select>
         </div>
-        <div class="my-4">
-            <h5><label for="news">News</label></h5>
-            <select  name="news" id="news_id">
-                <option value="">-</option>
-                @foreach ($newses as $id => $news)
-                    <option value="{{ $id }}">{{ $news->title }}</option>
-                @endforeach
-            </select>
-        </div>     
     </div>
 @endsection

@@ -18,9 +18,11 @@ class CreateVideosTable extends Migration
             'videos',
             function (Blueprint $table) {
                 $table->id();
+                $table->string('name', 100);
+
                 $table->string('uri', 300);
-                $table->string('type', 50)->default('local');
                 $table->text('description');
+                $table->string('type', 50)->default('local');
                 $table->string('tags', 100)->nullable();
 
                 $table->foreignId('concert_id')->nullable()->constrained();

@@ -17,6 +17,7 @@ class VideoFactory extends Factory
         $faker = \Faker\Factory::create();
 
         return [
+            "name" => $faker->name,
             "uri" => "https://mityurl.com/y/TEDT/r",
             "type" => "local",
             "description" => $faker->text,
