@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Session;
 
 class AlbumController extends Controller
 {
@@ -35,7 +36,36 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+            'title'       => 'required|max:100',
+            'description' => 'required|max:200',
+            'genre' => 'required|in:Progressive Metal,Hard Rock,Fusion',
+            'publish_date' => 'nullable'
+        );
+       
+        $mandatory_fields = array(
+            'title',
+            'description',
+            'genre',
+        );
+        $optional_fields = array(
+            'publish_date',
+        );
+        $validated = $request->validate($rules);
+
+        $new_album = new Album;
+        foreach ($mandatory_fields as $model_field) {
+            $new_album->$model_field       = $request->input($model_field);
+        }
+        foreach ($optional_fields as $field) {
+            if ($request->has($field)) {
+                $new_album->$field       = $request->input($field);
+            }
+        }
+        $new_album->save();
+
+        Session::flash('message', 'New album created successfully!');
+        return redirect()->route('albums.index');
     }
 
     /**
