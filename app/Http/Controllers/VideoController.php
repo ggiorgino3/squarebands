@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
@@ -13,7 +14,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('pages.administration.videos');
+        $videos = Video::paginate(10);
+        return view('pages.administration.videos')
+            ->withVideos($videos);
     }
 
     /**

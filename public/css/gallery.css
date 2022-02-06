@@ -32,3 +32,13 @@
 .container:hover .overlay {
     opacity: 1;
 }
+
+.container a {
+    color: antiquewhite;
+}
+.container a:hover {
+    color: slategray;
+}
+video + .overlay {
+    bottom: 59px;
+}

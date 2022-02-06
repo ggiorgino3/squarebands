@@ -34,7 +34,7 @@ class PhotoController extends Controller
             ->withPostRoute(route('photos.store'))
             ->withElement(array('id' => 'name', 'title' => 'photo'))
             ->withConcerts(Concert::all())
-            ->withNews(News::all());
+            ->withNewses(News::all());
     }
 
     /**
