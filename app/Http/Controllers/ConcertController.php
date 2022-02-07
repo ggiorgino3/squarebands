@@ -25,7 +25,9 @@ class ConcertController extends Controller
      */
     public function create()
     {
-        return view('pages.administration.concerts.create')->withPostRoute(route('concerts.store'))->withElement(array('id' => 'name', 'title' => 'concert'));
+        return view('pages.administration.concerts.createOrUpdate')
+                ->withRoute('concerts.store')
+                ->withElement(array('id' => 'name', 'title' => 'concert'));
     }
 
     /**
@@ -36,6 +38,71 @@ class ConcertController extends Controller
      */
     public function store(Request $request)
     {
+        $this->insertOrUpdate($request);
+
+        Session::flash('message', 'New concert successfully created!');
+        return redirect()->route('concerts.index');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $concert = Concert::find($id);
+        $route = 'concerts.update';
+        $parameters = ['concert' => $concert];
+        return view('pages.administration.concerts.createOrUpdate')
+            ->with(compact('route', 'parameters'))
+            ->withModel($concert)
+            ->withElement(array('id' => 'name', 'title' => 'concert'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->insertOrUpdate($request, $id);
+
+        Session::flash('message', 'Concert updated successfully!');
+        return redirect()->route('concerts.edit', ['concert' => $id])
+                ->withInput();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    private function insertOrUpdate(Request $request, $id = null)
+    {
+
         $rules = array(
             'name'       => 'required|max:100',
             'place_name' => 'required|max:100',
@@ -64,64 +131,21 @@ class ConcertController extends Controller
         );
         $validated = $request->validate($rules);
 
-        $new_concert = new Concert;
+        if (isset($id)) {
+            $new_concert = Concert::find($id);
+        } else {
+            $new_concert = new Concert;
+        }
+        
         foreach ($mandatory_fields as $model_field) {
             $new_concert->$model_field       = $request->input($model_field);
         }
+
         foreach ($optional_fields as $field) {
             if ($request->has($field)) {
                 $new_concert->$field       = $request->input($field);
             }
         }
         $new_concert->save();
-
-        Session::flash('message', 'New concert successfully created!');
-        return redirect()->route('concerts.index');
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -2,38 +2,36 @@
 @section('form_content')
     <div class="form-group required">
         <div class="my-4">
-            <h5><label for="place_name">Concert place name</label> </h5>
-            <input required type="text" name="place_name" id="place_name" placeholder="Stadium, Theater..."/>
+            {{ Form::label('place_name', 'Concert place name', ['class' => 'px-0']) }}
+            {{ Form::text('place_name', Request::old('place_name', isset($model) ? $model->place_name : ''), ['placeholder' => 'Stadium, Theater...','required' => 'required']) }}
         </div>
         <div class="my-4">
-            <h5><label for="place_address">Concert place address</label></h5>
-            <input required type="text" name="place_address" id="place_address" placeholder="Street..."/>
+            {{ Form::label('place_address', 'Concert place address', ['class' => 'px-0']) }}
+            {{ Form::text('place_address', Request::old('place_address', isset($model) ? $model->place_address : ''), ['placeholder' => 'Street...','required' => 'required']) }}
         </div>
         <div class="my-4">
-            <h5><label for="country_name">Concert country</label></h5>
-            <input required type="text" name="country_name" id="country_name" placeholder="Virginia, North Carolina"/>
+            {{ Form::label('country_name', 'Concert country', ['class' => 'px-0']) }}
+            {{ Form::text('country_name', Request::old('country_name', isset($model) ? $model->country_name : ''), ['placeholder' => 'Virginia, North Carolina','required' => 'required']) }}
         </div>
         <div class="my-4">
-            <h5><label for="city_name">Concert city</label></h5>
-            <input required type="text" name="city_name" id="city_name" placeholder="Sydney, Melbourne..."/>
+            {{ Form::label('city_name', 'Concert city', ['class' => 'px-0']) }}
+            {{ Form::text('city_name', Request::old('city_name', isset($model) ? $model->city_name : ''), ['placeholder' => 'Sydney, Melbourne...','required' => 'required']) }}
         </div>
         <div class="my-4">
-            <h5><label for="datetime">Concert Date / Hour</label></h5>
-            <input required type="datetime" name="datetime" id="datetime" />
+            {{ Form::label('datetime', 'Concert Date / Hour', ['class' => 'px-0']) }}
+            {{ Form::text('datetime', Request::old('datetime', isset($model) ? $model->datetime : ''), ['placeholder' => '','required' => 'required']) }}
         </div>
     </div>
     <div class="my-4">
-        <h5><label for="gate_opening">Gates opening hour</label></h5>
-        <input type="gate_opening" name="gate_opening" id="gate_opening" />
+        {{ Form::label('gate_opening', 'Gates opening hour', ['class' => 'px-0']) }}
+        {{ Form::text('gate_opening', Request::old('gate_opening', isset($model) ? $model->gate_opening : '')) }}
     </div>
     <div class="my-4">
-        <h5><label for="maximum_seating_no">Number of seatings</label></h5>
-        <input type="maximum_seating_no" name="maximum_seating_no" id="maximum_seating_no" />
+        {{ Form::label('maximum_seating_no', 'Number of seatings', ['class' => 'px-0']) }}
+        {{ Form::text('maximum_seating_no', Request::old('maximum_seating_no', isset($model) ? $model->maximum_seating_no : '')) }}
     </div>
     <div class="my-4">
-        <h5><label for="ticket_link">Ticket website url</label></h5>
-        <input type="ticket_link" name="ticket_link" id="ticket_link" />
+        {{ Form::label('ticket_link', 'Ticket Website URL', ['class' => 'px-0']) }}
+        {{ Form::text('ticket_link', Request::old('ticket_link', isset($model) ? $model->ticket_link : '')) }}
     </div>
-
 @endsection
-
