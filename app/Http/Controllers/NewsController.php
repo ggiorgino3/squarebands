@@ -26,8 +26,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('pages.administration.news.create')
-            ->withPostRoute(route('news.store'))
+        $statuses = $this->buildStatusesArray();
+        return view('pages.administration.news.createOrUpdate')
+            ->withRoute('news.store')
+            ->withStatuses($statuses)
             ->withElement(array('id' => 'title', 'title' => 'news'));
     }
 
@@ -39,30 +41,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'title'       => 'required|max:150',
-            'description' => 'required|max:200',
-            'status' => 'required|in:publish,draft,trash',
-        );
-       
-        $mandatory_fields = array(
-            'title',
-            'description',
-            'status',
-        );
-        $optional_fields = array();
-        $validated = $request->validate($rules);
-
-        $new_news = new News;
-        foreach ($mandatory_fields as $model_field) {
-            $new_news->$model_field       = $request->input($model_field);
-        }
-        foreach ($optional_fields as $field) {
-            if ($request->has($field)) {
-                $new_news->$field       = $request->input($field);
-            }
-        }
-        $new_news->save();
+        $this->insertOrUpdate($request);
 
         Session::flash('message', 'New news successfully created!');
         return redirect()->route('news.index');
@@ -76,7 +55,6 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -87,7 +65,15 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::find($id);
+        $news->name = $news->title; // @phpstan-ignore-line
+
+        $statuses = $this->buildStatusesArray();
+        $route = 'news.update';
+        return view('pages.administration.news.createOrUpdate')
+            ->with(compact('route', 'statuses'))
+            ->withModel($news)
+            ->withElement(array('id' => 'title', 'title' => 'news'));
     }
 
     /**
@@ -99,7 +85,12 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->insertOrUpdate($request, $id);
+
+        Session::flash('message', 'News updated successfully!');
+        return redirect()
+            ->route('news.edit', ['news' => $id])
+            ->withInput();
     }
 
     /**
@@ -117,13 +108,53 @@ class NewsController extends Controller
     {
         switch ($statusNotBeautified) {
             case 'publish':
-                return "Published";
+            return "Published";
             case 'draft':
-                return "Draft";
+            return "Draft";
             case 'trash':
-                return "Trash";
+            return "Trash";
             default:
-                break;
+            break;
         }
+    }
+
+    private function insertOrUpdate(Request $request, $id = null)
+    {
+        $rules = array(
+            'title'       => 'required|max:150',
+            'description' => 'required|max:200',
+            'status' => 'required|in:publish,draft,trash',
+        );
+       
+        $mandatory_fields = array(
+            'title',
+            'description',
+            'status',
+        );
+        $optional_fields = array();
+        $validated = $request->validate($rules);
+        if (isset($id)) {
+            $news = News::find($id);
+        } else {
+            $news = new News;
+        }
+        foreach ($mandatory_fields as $model_field) {
+            $news->$model_field       = $request->input($model_field);
+        }
+        foreach ($optional_fields as $field) {
+            if ($request->has($field)) {
+                $news->$field       = $request->input($field);
+            }
+        }
+        $news->save();
+    }
+
+    private function buildStatusesArray()
+    {
+        return array(
+            'publish' => 'Published',
+            'draft' => 'Draft',
+            'trash' => 'Trash',
+        );
     }
 }
