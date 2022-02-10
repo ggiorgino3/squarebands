@@ -28,7 +28,8 @@ class ConcertController extends Controller
     {
         return view('pages.administration.concerts.createOrUpdate')
                 ->withRoute('concerts.store')
-                ->withElement(array('id' => 'name', 'title' => 'concert'));
+                ->withElement(array('id' => 'name', 'title' => 'concert'))
+                ->withInput();
     }
 
     /**
