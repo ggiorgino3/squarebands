@@ -15,7 +15,8 @@ class ConcertController extends Controller
      */
     public function index()
     {
-        return view('pages.administration.concerts.index')->withConcerts(Concert::all());
+        return view('pages.administration.concerts.index')
+                ->withConcerts(Concert::all());
     }
 
     /**
@@ -66,9 +67,8 @@ class ConcertController extends Controller
     {
         $concert = Concert::find($id);
         $route = 'concerts.update';
-        $parameters = ['concert' => $concert];
         return view('pages.administration.concerts.createOrUpdate')
-            ->with(compact('route', 'parameters'))
+            ->with(compact('route'))
             ->withModel($concert)
             ->withElement(array('id' => 'name', 'title' => 'concert'));
     }
@@ -102,7 +102,6 @@ class ConcertController extends Controller
 
     private function insertOrUpdate(Request $request, $id = null)
     {
-
         $rules = array(
             'name'       => 'required|max:100',
             'place_name' => 'required|max:100',

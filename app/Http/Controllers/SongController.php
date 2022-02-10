@@ -16,7 +16,8 @@ class SongController extends Controller
      */
     public function index()
     {
-        return view('pages.administration.songs.index')->withSongs(Song::all());
+        return view('pages.administration.songs.index')
+                ->withSongs(Song::all());
     }
 
     /**
@@ -26,20 +27,89 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('pages.administration.songs.create')
-                ->withPostRoute(route('songs.store'))
-                ->withElement(array('id' => 'name', 'title' => 'song'))
-                ->withAlbums(Album::all());
+        return view('pages.administration.songs.createOrUpdate')
+            ->withPostRoute(route('songs.store'))
+            ->withElement(array('id' => 'name', 'title' => 'song'))
+            ->withAlbums(Album::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $this->insertOrUpdate($request);
+
+        Session::flash('message', 'New song successfully created!');
+        return redirect()->route('songs.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $song = Song::find($id);
+        $route = 'songs.update';
+        
+        $albums = array('' => '-');
+        $albums_temp = Album::all();
+        foreach ($albums_temp as $temp_album) {
+            $albums[$temp_album->id] = $temp_album->title;
+        }
+        return view('pages.administration.songs.createOrUpdate')
+            ->with(compact('route', 'albums'))
+            ->withModel($song)
+            ->withElement(array('id' => 'name', 'title' => 'concert'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->insertOrUpdate($request, $id);
+
+        Session::flash('message', 'Song updated successfully!');
+        return redirect()->route('songs.edit', ['song' => $id])
+                ->withInput();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    private function insertOrUpdate(Request $request, $id = null)
+    {
+
         $rules = array(
             'name'       => 'required|max:50',
             'description'       => 'required',
@@ -63,63 +133,21 @@ class SongController extends Controller
         );
         $validated = $request->validate($rules);
 
-        $new_song = new Song;
-        foreach ($mandatory_fields as $model_field) {
-            $new_song->$model_field       = $request->input($model_field);
+        if (isset($id)) {
+            $song = Song::find($id);
+        } else {
+            $song = new Song;
         }
+        
+        foreach ($mandatory_fields as $model_field) {
+            $song->$model_field       = $request->input($model_field);
+        }
+
         foreach ($optional_fields as $field) {
             if ($request->has($field)) {
-                $new_song->$field       = $request->input($field);
+                $song->$field       = $request->input($field);
             }
         }
-        $new_song->save();
-
-        Session::flash('message', 'New song successfully created!');
-        return redirect()->route('songs.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $song->save();
     }
 }
