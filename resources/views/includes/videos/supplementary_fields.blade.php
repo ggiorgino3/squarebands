@@ -2,19 +2,18 @@
 @section('form_content')
     <div class="form-group required">
         <div class="my-4">
-            <h5><label for="video">Video</label> </h5>
-            <input required class="required" type="file" name="video" id="video" />
+            {{ Form::label('video', 'Video') }}
+            {{ Form::file('video', ['required' => 'required'] ) }}
         </div>
     </div>
     <div class="form-group">
         <div class="my-4">
-            <h5><label for="concert">Concert</label></h5>
-            <select  name="concert" id="concert_id">
-                <option value="">-</option>
-                @foreach ($concerts as $id => $concert)
-                    <option value="{{ $id }}">{{ $concert->name }}</option>
-                @endforeach
-            </select>
+            <div class="my-2">
+                {{ Form::label('concert', 'Concert') }}
+            </div>
+            <div class="my-2">
+                {{ Form::select('concert', $concerts, Request::old('concert', isset($model) ? $model->concert_id : '')) }}
+            </div>
         </div>
     </div>
 @endsection

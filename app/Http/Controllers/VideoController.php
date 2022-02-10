@@ -28,10 +28,10 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('pages.administration.videos.create')
-        ->withPostRoute(route('videos.store'))
-        ->withElement(array('id' => 'name', 'title' => 'video'))
-        ->withConcerts(Concert::all());
+        return view('pages.administration.videos.createOrUpdate')
+            ->withRoute('videos.store')
+            ->withElement(array('id' => 'name', 'title' => 'video'))
+            ->withConcerts($this->buildConcertsArray());
     }
 
     /**
@@ -42,37 +42,11 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'name'       => 'required|max:50',
-            'description'       => 'required',
-            'video' => 'required|mimes:mp4,avi|max:5192',
-            'concert_id' => 'nullable|exists:concerts',
-        );
-       
-        $mandatory_fields = array(
-            'name',
-            'description',
-        );
-        $optional_fields = array(
-            'concert_id',
-        );
-        $validated = $request->validate($rules);
-        $videoName = time().'.'.$request->video->extension();
-        $request->video->move(public_path('videos'), $videoName);
-        $new_video = new Video;
-        foreach ($mandatory_fields as $model_field) {
-            $new_video->$model_field       = $request->input($model_field);
-        }
-        foreach ($optional_fields as $field) {
-            if ($request->has($field)) {
-                $new_video->$field       = $request->input($field);
-            }
-        }
-        $new_video->uri = url("videos/$videoName");
-        $new_video->save();
+        $this->insertOrUpdate($request);
 
         Session::flash('message', 'New video successfully created!');
-        return redirect()->route('videos.index');
+        return redirect()
+                ->route('videos.index');
     }
 
     /**
@@ -94,7 +68,14 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = Video::find($id);
+        
+        $route = 'videos.update';
+        return view('pages.administration.videos.createOrUpdate')
+            ->with(compact('route'))
+            ->withModel($video)
+            ->withElement(array('id' => 'name', 'title' => 'video'))
+            ->withConcerts($this->buildConcertsArray());
     }
 
     /**
@@ -106,7 +87,12 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->insertOrUpdate($request, $id);
+
+        Session::flash('message', 'Video updated successfully!');
+        return redirect()
+                ->route('videos.edit', ['video' => $id])
+                ->withInput();
     }
 
     /**
@@ -118,5 +104,51 @@ class VideoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function insertOrUpdate(Request $request, $id = null)
+    {
+        $rules = array(
+            'name'       => 'required|max:50',
+            'description'       => 'required',
+            'video' => 'required|mimes:mp4,avi|max:5192',
+            'concert_id' => 'nullable|exists:concerts',
+        );
+       
+        $mandatory_fields = array(
+            'name',
+            'description',
+        );
+        $optional_fields = array(
+            'concert_id',
+        );
+        $validated = $request->validate($rules);
+        $videoName = time().'.'.$request->video->extension();
+        $request->video->move(public_path('videos'), $videoName);
+        if (isset($id)) {
+            $video = Video::find($id);
+        } else {
+            $video = new Video;
+        }
+        foreach ($mandatory_fields as $model_field) {
+            $video->$model_field       = $request->input($model_field);
+        }
+        foreach ($optional_fields as $field) {
+            if ($request->has($field)) {
+                $video->$field       = $request->input($field);
+            }
+        }
+        $video->uri = url("videos/$videoName");
+        $video->save();
+    }
+
+    private function buildConcertsArray()
+    {
+        $concerts = array('' => '-');
+        $concerts_temp = Concert::all();
+        foreach ($concerts_temp as $temp_concert) {
+            $concerts[$temp_concert->id] = $temp_concert->name;
+        }
+        return $concerts;
     }
 }
