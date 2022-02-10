@@ -28,9 +28,9 @@ class SongController extends Controller
     public function create()
     {
         return view('pages.administration.songs.createOrUpdate')
-            ->withPostRoute(route('songs.store'))
+            ->withRoute('songs.store')
             ->withElement(array('id' => 'name', 'title' => 'song'))
-            ->withAlbums(Album::all());
+            ->withAlbums($this->buildAlbumsArray());
     }
 
     /**
@@ -68,15 +68,11 @@ class SongController extends Controller
     {
         $song = Song::find($id);
         $route = 'songs.update';
-        
-        $albums = array('' => '-');
-        $albums_temp = Album::all();
-        foreach ($albums_temp as $temp_album) {
-            $albums[$temp_album->id] = $temp_album->title;
-        }
+       
         return view('pages.administration.songs.createOrUpdate')
-            ->with(compact('route', 'albums'))
+            ->with(compact('route'))
             ->withModel($song)
+            ->withAlbums($this->buildAlbumsArray())
             ->withElement(array('id' => 'name', 'title' => 'concert'));
     }
 
@@ -92,7 +88,8 @@ class SongController extends Controller
         $this->insertOrUpdate($request, $id);
 
         Session::flash('message', 'Song updated successfully!');
-        return redirect()->route('songs.edit', ['song' => $id])
+        return redirect()
+                ->route('songs.edit', ['song' => $id])
                 ->withInput();
     }
 
@@ -105,6 +102,15 @@ class SongController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function buildAlbumsArray() {
+        $albums = array('' => '-');
+        $albums_temp = Album::all();
+        foreach ($albums_temp as $temp_album) {
+            $albums[$temp_album->id] = $temp_album->title;
+        }
+        return $albums;
     }
 
     private function insertOrUpdate(Request $request, $id = null)
