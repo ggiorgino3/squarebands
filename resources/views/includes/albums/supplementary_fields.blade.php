@@ -1,16 +1,14 @@
 @extends('includes.basic_admin_form')
 @section('form_content')
     <div class="form-group required">
-        <h5><label for="genre">Genre</label></h5>
-        <select required name="genre" id="genre">
-            <option value="Progressive Metal">Progressive Metal</option>
-            <option value="Hard Rock">Hard Rock</option>
-            <option value="Fusion">Fusion</option>
-        </select>
+        <div class="my-2">
+            {{ Form::label('genre', 'Genre') }}
+            {{ Form::select('genre', ['Progressive Metal', 'Hard Rock', 'Fusion'], Request::old('genre', isset($model) ? $model->genre : ''), ['required' => 'required']) }}
+        </div>
     </div>
     <div class="my-4">
-        <h5><label for="publish_date">Publish Date</label> </h5>
-        <input type="text" name="place_name" id="publish_date" placeholder="Format YYYY-MM-DD"/>
+        {{ Form::label('publish_date', 'Publish Date', ['class' => 'px-0']) }}
+        {{ Form::text('publish_date', Request::old('publish_date', isset($model) ? $model->publish_date : ''), ['placeholder' => 'Format YYYY-MM-DD','required' => 'required']) }}
     </div>
 @endsection
 
