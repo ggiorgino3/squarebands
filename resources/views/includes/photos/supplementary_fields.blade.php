@@ -2,32 +2,29 @@
 @section('form_content')
     <div class="form-group required">
         <div class="my-4">
-            <h5><label for="caption">Caption</label> </h5>
-            <input required type="text" name="caption" id="caption" />
+            {{ Form::label('caption', 'Caption') }}
+            {{-- <h5><label for="caption">Caption</label> </h5> --}}
+            {{-- <input required type="text" name="caption" id="caption" /> --}}
+            {{ Form::text('caption', Request::old('caption', isset($model) ? $model->caption : ''), ['required' => 'required']) }}
         </div>
         <div class="my-4">
-            <h5><label for="photo">Photo</label> </h5>
-            <input required class="required" type="file" name="photo" id="photo" />
+            {{ Form::label('photo', 'Photo') }}
+            {{ Form::file('photo', ['required' => 'required'] ) }}
         </div>
     </div>
     <div class="form-group">
-        <div class="my-4">
-            <h5><label for="concert">Concert</label></h5>
-            <select  name="concert" id="concert_id">
-                <option value="">-</option>
-                @foreach ($concerts as $id => $concert)
-                    <option value="{{ $id }}">{{ $concert->name }}</option>
-                @endforeach
-            </select>
+        <div class="my-2">
+            {{ Form::label('concert', 'Concert') }}
         </div>
-        <div class="my-4">
-            <h5><label for="news">News</label></h5>
-            <select  name="news" id="news_id">
-                <option value="">-</option>
-                @foreach ($newses as $id => $news)
-                    <option value="{{ $id }}">{{ $news->title }}</option>
-                @endforeach
-            </select>
-        </div>     
+        <div class="my-2">
+            {{ Form::select('concert', $concerts, Request::old('concert', isset($model) ? $model->concert_id : '')) }}
+        </div>
+        <div class="my-2">
+            {{ Form::label('news', 'News') }}
+        </div>
+        <div class="my-2">
+            {{ Form::select('news', $news, Request::old('news', isset($model) ? $model->news_id : '')) }}
+        </div>
+       
     </div>
 @endsection
