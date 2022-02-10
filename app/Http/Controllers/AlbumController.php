@@ -27,8 +27,7 @@ class AlbumController extends Controller
     {
         return view('pages.administration.albums.createOrUpdate')
             ->withRoute('albums.store')
-            ->withElement(array('id' => 'title', 'title' => 'album'))
-            ->withInput();
+            ->withElement(array('id' => 'title', 'title' => 'album'));
     }
 
     /**
