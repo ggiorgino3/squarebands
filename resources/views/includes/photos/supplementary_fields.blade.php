@@ -23,7 +23,7 @@
             {{ Form::label('news', 'News') }}
         </div>
         <div class="my-2">
-            {{ Form::select('news', $news, Request::old('news', isset($model) ? $model->news_id : '')) }}
+            {{ Form::select('news', $newses, Request::old('news', isset($model) ? $model->news_id : '')) }}
         </div>
        
     </div>

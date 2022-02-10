@@ -30,11 +30,11 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        return view('pages.administration.photos.create')
-            ->withPostRoute(route('photos.store'))
+        return view('pages.administration.photos.createOrUpdate')
+            ->withRoute('photos.store')
             ->withElement(array('id' => 'name', 'title' => 'photo'))
-            ->withConcerts(Concert::all())
-            ->withNewses(News::all());
+            ->withConcerts($this->buildConcertsArray())
+            ->withNewses($this->buildNewsArray());
     }
 
     /**
@@ -71,22 +71,14 @@ class PhotoController extends Controller
     public function edit($id)
     {
         $photo = Photo::find($id);
-        $concerts = array('' => '-');
-        $concerts_temp = Concert::all();
-        foreach ($concerts_temp as $temp_concert) {
-            $concerts[$temp_concert->id] = $temp_concert->name;
-        }
-
-        $news = array('' => '-');
-        $news_temp = News::all();
-        foreach ($news_temp as $temp_news) {
-            $news[$temp_news->id] = $temp_news->title;
-        }
+        
         $route = 'photos.update';
         return view('pages.administration.photos.createOrUpdate')
-            ->with(compact('route', 'concerts', 'news'))
+            ->with(compact('route'))
             ->withModel($photo)
-            ->withElement(array('id' => 'name', 'title' => 'photo'));
+            ->withElement(array('id' => 'name', 'title' => 'photo'))
+            ->withConcerts($this->buildConcertsArray())
+            ->withNewses($this->buildNewsArray());
     }
 
     /**
@@ -158,4 +150,23 @@ class PhotoController extends Controller
     {
         //
     }
+
+    private function buildNewsArray(){
+        $news = array('' => '-');
+        $news_temp = News::all();
+        foreach ($news_temp as $temp_news) {
+            $news[$temp_news->id] = $temp_news->title;
+        }
+        return $news;
+    }
+
+    private function buildConcertsArray(){
+        $concerts = array('' => '-');
+        $concerts_temp = Concert::all();
+        foreach ($concerts_temp as $temp_concert) {
+            $concerts[$temp_concert->id] = $temp_concert->name;
+        }
+        return $concerts;
+    }
+    
 }
