@@ -4,6 +4,7 @@
 <head>
     @include('includes.head_admin')
     @stack('styles')
+    @stack('scripts')
 </head>
 
 <body>

@@ -73,7 +73,7 @@ Route::prefix('administration')->group(
                         'concerts' => ConcertController::class,
                         'contacts' => ContactController::class,
                         'albums' => AlbumController::class,
-                        'informations' => InformationController::class,
+                        'informations' => InformationController::class
                     ]
                 );
             }

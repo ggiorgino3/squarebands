@@ -14,8 +14,10 @@ class CreateOptionsTable extends Migration
             'options',
             function (Blueprint $table) {
                 $table->id();
+                $table->string('title', 50)->nullable();
                 $table->string('meta_key', 50);
                 $table->text('meta_value');
+                $table->boolean('visible_on_frontend');
                 $table->timestamps();
             }
         );

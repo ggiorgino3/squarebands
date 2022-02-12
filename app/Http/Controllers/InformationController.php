@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Information;
+use App\Models\Option;
 use App\Models\Options;
 use Illuminate\Http\Request;
+use Response;
+use Session;
 
 class InformationController extends Controller
 {
@@ -15,17 +19,7 @@ class InformationController extends Controller
     public function index()
     {
         return view('pages.administration.informations.index')
-                ->withOptions(Options::all());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+                ->withOptions(Option::all());
     }
 
     /**
@@ -36,29 +30,38 @@ class InformationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $rules = array(
+            'title'       => 'nullable|max:50',
+            'meta_key' => 'required|max:50',
+            'meta_value' => 'required',
+            'visible_on_frontend' => 'required|in:0,1'
+        );
+       
+        $mandatory_fields = array(
+            'meta_key',
+            'meta_value',
+            'visible_on_frontend',
+        );
+        $optional_fields = array(
+            'title'
+        );
+        $validated = $request->validate($rules);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $information = new Option;
+        
+        foreach ($mandatory_fields as $model_field) {
+            $information->$model_field       = $request->input($model_field);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        foreach ($optional_fields as $field) {
+            if ($request->has($field)) {
+                $information->$field       = $request->input($field);
+            }
+        }
+
+        $information->save();
+        Session::flash('message', 'New option created successfully!');
+        return response()->json(["id" => $information->id]);
     }
 
     /**
@@ -70,9 +73,15 @@ class InformationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = Option::find($id);
+        $info->meta_key = $request->input('meta_key');
+        $info->meta_value = $request->input('meta_value');
+        $info->title = $request->input('title');
+        $info->visible_on_frontend = $request->input('visible');
+        $info->save();
+        return response()->json([$request->all(), $id]);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -81,6 +90,8 @@ class InformationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $info = Option::find($id);
+        $info->delete();
+        return response()->json([$id]);
     }
 }

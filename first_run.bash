@@ -37,16 +37,16 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 sail artisan migrate
 
-echo "DB::table('options')->insert(array('meta_key' => 'band_name', 'meta_value' => 'Dream Theater'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'band_country', 'meta_value' => 'America'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'band_genre', 'meta_value' => 'Progressive Rock / Progressive Metal'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'video_maximum_size', 'meta_value' => '10'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'video_valid_extensions', 'meta_value' => 'avi,mp4'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'photo_maximum_size', 'meta_value' => '3'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'photo_valid_extensions', 'meta_value' => 'png,jpg,jpeg'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'song_maximum_size', 'meta_value' => '10'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'song_valid_extensions', 'meta_value' => 'mp3'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'fb_link', 'meta_value' => 'https://facebook.com/dreamtheater'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'ig_link', 'meta_value' => 'https://instagram.com/dreamtheaterofficial'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'spotify_url', 'meta_value' => 'https://open.spotify.com/artist/2aaLAng2L2aWD2FClzwiep'));" | sail tinker
-echo "DB::table('options')->insert(array('meta_key' => 'yt_channel', 'meta_value' => 'https://youtube.com/dreamtheater'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '1', 'title' => 'Band Name', 'meta_key' => 'band_name', 'meta_value' => 'Dream Theater'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '1', 'title' => 'Band Country', 'meta_key' => 'band_country', 'meta_value' => 'America'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '1', 'title' => 'Band Genre', 'meta_key' => 'band_genre', 'meta_value' => 'Progressive Rock / Progressive Metal'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'video_maximum_size', 'meta_value' => '10'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'video_valid_extensions', 'meta_value' => 'avi,mp4'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'photo_maximum_size', 'meta_value' => '3'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'photo_valid_extensions', 'meta_value' => 'png,jpg,jpeg'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'song_maximum_size', 'meta_value' => '10'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'song_valid_extensions', 'meta_value' => 'mp3'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'fb_link', 'meta_value' => 'https://facebook.com/dreamtheater'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'ig_link', 'meta_value' => 'https://instagram.com/dreamtheaterofficial'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'spotify_url', 'meta_value' => 'https://open.spotify.com/artist/2aaLAng2L2aWD2FClzwiep'));" | sail tinker
+echo "DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'yt_channel', 'meta_value' => 'https://youtube.com/dreamtheater'));" | sail tinker

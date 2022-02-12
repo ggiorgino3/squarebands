@@ -1,75 +1,63 @@
 @extends('layouts.base_admin')
+@push('styles')
+    <style>
+        .icons {
+            font-size: 1.5rem
+        }
+    </style>
+@endpush
+@push('scripts')
+    <script>
+        const ROUTE_POST = "{{ route('informations.store') }}";
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ asset('js/informations.js') }}" rel="stylesheet" ></script>    
+    <script>
+        $(document).ready(function() {
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-    function generate_row(id, key, value) {
-        key ??= "";
-        value ??= "";
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-        new_row =
-            "<tr>" +
-             
-            "<td class='align-middle'>" 
-                + `<div class="input-group my-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Info Name</span>
-                        </div>
-                        <input type='text' class='form-control' value='${key}' />` 
-                        +
-            "</td>" +
-            "<td>" +
-                 `<div class="input-group my-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Info Value</span>
-                        </div>
-                        <input type='text' class='form-control' value='${value}' />` +
-            "</td>" +
-            "<td class='align-middle'>" +
-            `<div class="text-center"><a id="save" data-id="${id}" href="#"><i class="fas fa-save " style="font-size: 2rem;"></i></a></div>` +
-            "</td>" +
-            "</tr>";
-        return new_row;
-    }
+            $(document).on('change', 'input[type="checkbox"]', function() {             
+                var tr = event.target.closest('tr');
+                $(".title", tr).prop('disabled', !this.checked);
+               
+            });
+            var options = [];
 
-    $(document).ready(function() {
-        var options = [];
+            <?php foreach($options as $option): ?>
+                options.push({
+                    'id': "{{ $option->id }}",
+                    'visible': "{{ $option->visible_on_frontend ? 'checked' : '' }}",
+                    'key': "{{ $option->meta_key }}",
+                    'title': "{{ $option->title }}",
+                    'value': "{{ $option->meta_value }}"
+                });
+            <?php endforeach; ?>
 
-        <?php foreach($options as $option): ?>
-        options.push({
-            'id': "{{ $option->id }}",
-            'key': "{{ $option->meta_key }}",
-            'value': "{{ $option->meta_value }}"
+            options.forEach(option => $('tbody').append(generate_row(option)));
+
+            $('thead, tfoot').on('click', '.addRow', function() {
+                $('tbody').append(generate_row());
+            })
         });
-        <?php endforeach; ?>
-
-        options.forEach(option => $('tbody').append(generate_row(option.id, option.key, option.value)));
-
-        $('thead').on('click', '.addRow', function() {
-            $('tbody').append(generate_row());
-        })
-    });
-</script>
+    </script>
+@endpush
 
 @section('content')
     <h1>More Informations</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">
-                    Information title
-                </th>
-                <th scope="col">
-                    Information value
-                </th>
-                <th scope="col" class="text-center">
-                    <a href="javascript:void(0)" class="addRow">
-                        Add Information
-                    </a>
-                </th>
-            </tr>
+    <table class="table table-striped">
+        <thead class="thead">
+            @include('includes.informations.table_columns')
         </thead>
         <tbody>
            
         </tbody>
+        <tfoot class="thead">
+            @include('includes.informations.table_columns')
+        </tfoot>
     </table>
 @endsection
