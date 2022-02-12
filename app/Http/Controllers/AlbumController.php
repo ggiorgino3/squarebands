@@ -84,9 +84,9 @@ class AlbumController extends Controller
     {
         $this->insertOrUpdate($request, $id);
 
-        Session::flash('message', 'Concert updated successfully!');
+        Session::flash('message', 'Album updated successfully!');
         return redirect()
-            ->route('concerts.edit', ['concert' => $id])
+            ->route('albums.edit', ['album' => $id])
             ->withInput();
     }
 

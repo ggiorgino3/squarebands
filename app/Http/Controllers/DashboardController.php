@@ -14,12 +14,12 @@ class DashboardController extends Controller
     public function index()
     {
         return view('pages.administration.dashboard')
-            ->withLastThreeNews(News::orderBy('created_at', 'desc')->take(3)->get())
+            ->withLastThreeNews(News::where('status', 'publish')->orderBy('updated_at', 'desc')->take(3)->get())
             ->withNewsColumns(array(
                 'title' => "Title",
                 'created_at' => "Published Date"
             ))
-            ->withLastThreeConcerts(Concert::orderBy('datetime', 'desc')->take(3)->get())
+            ->withLastThreeConcerts(Concert::where('datetime', '>', date("Y-m-d H:i:s"))->orderBy('datetime', 'asc')->take(3)->get())
             ->withConcertsColumns(array(
                 'name' => "Name",
                 'city_name' => "City Name",

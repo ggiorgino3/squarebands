@@ -3,7 +3,7 @@
     <div class="form-group required">
         <div class="my-2">
             {{ Form::label('genre', 'Genre') }}
-            {{ Form::select('genre', ['Progressive Metal', 'Hard Rock', 'Fusion'], Request::old('genre', isset($model) ? $model->genre : ''), ['required' => 'required']) }}
+            {{ Form::select('genre', ['Progressive Metal' => 'Progressive Metal','Hard Rock' => 'Hard Rock',  'Fusion' =>'Fusion'], Request::old('genre', isset($model) ? $model->genre : ''), ['required' => 'required']) }}
         </div>
     </div>
     <div class="my-4">

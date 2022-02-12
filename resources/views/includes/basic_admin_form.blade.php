@@ -16,7 +16,7 @@
     <h1>
         Add new {{ $element['title'] }}
     </h1>
-    {{ Form::open(['route' => $route,  'files' => true,]) }}
+    {{ Form::open(['route' => $route,  'files' => true]) }}
 @endif
 @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>

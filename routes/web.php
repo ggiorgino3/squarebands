@@ -6,6 +6,7 @@ use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SongController;
@@ -71,7 +72,8 @@ Route::prefix('administration')->group(
                         'news' => NewsController::class,
                         'concerts' => ConcertController::class,
                         'contacts' => ContactController::class,
-                        'albums' => AlbumController::class
+                        'albums' => AlbumController::class,
+                        'informations' => InformationController::class,
                     ]
                 );
             }
