@@ -115,11 +115,6 @@ class SidebarAdminComposer
                      "icon" => 'circle-info',
                      "title" => 'All infos',
                  ),
-                 array(
-                     "url" => "$this->base_url/informations/create",
-                     "icon" => 'plus',
-                     "title" => 'Add an information',
-                 ),
             ),
         );
     }
