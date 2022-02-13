@@ -29,8 +29,9 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'includes.concerts.view_concert',
                 'pages.homepage',
                 'pages.news',
-                'pages.photos',
-                'pages.videos'
+                'pages.photos.frontendIndex',
+                'pages.videos',
+                'pages.informations'
             ],
             "App\View\Composers\BaseComposer"
         );

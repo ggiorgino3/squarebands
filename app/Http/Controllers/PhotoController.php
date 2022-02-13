@@ -17,10 +17,17 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::all();
+        $photos = Photo::paginate(15);
         return view('pages.administration.photos.index')
             ->withPhotos($photos)
             ->withCountDividedPhotos(ceil(count($photos) / 3));
+    }
+
+    public function frontendIndex()
+    {
+        $photos = Photo::paginate(15);
+        return view('pages.photos.frontendIndex')
+            ->withPhotos($photos);
     }
 
     /**

@@ -22,10 +22,19 @@ Route::view('/', "pages.homepage")->name("home");
 Route::get(
     '/concerts',
     [ConcertController::class, "frontendIndex"]
-)->name('pages.concerts');
-Route::view('/concerts', 'pages.concerts');
-Route::view('/news', 'pages.news');
+)->name('concerts');
+
+Route::get(
+    '/concerts/{id}',
+    [ConcertController::class, "show"]
+)->name('concerts.single');
+
 Route::view('/photo_gallery', 'pages.photos');
+
+Route::get(
+    '/photo_gallery',
+    [PhotoController::class, "frontendIndex"]
+)->name('photogallery');
 Route::view('/videos', 'pages.videos');
 Route::view('/songs', 'pages.songs');
 Route::view('/contacts', 'pages.contacts');

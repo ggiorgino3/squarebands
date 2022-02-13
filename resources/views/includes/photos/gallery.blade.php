@@ -35,8 +35,8 @@
                 <?php $base_count += 3 ?>
             </div>
         @endfor
-        {{-- <div class="text-center">
-            {!! $posts->links() !!}
-        </div> --}}
+         <div class="text-center">
+            {!! $photos->links() !!}
+        </div> 
     </div>
 </div>
