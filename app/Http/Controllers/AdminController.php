@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 use Session;
 
@@ -39,7 +40,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->insertOrUpdate($request);
+        $this->insertOrUpdate($request);
 
         Session::flash('message', 'New administrator successfully created!');
         return redirect()->route('admins.index');
@@ -82,7 +83,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //$this->insertOrUpdate($request, $id);
+        $this->insertOrUpdate($request, $id);
 
         Session::flash('message', 'Admin updated successfully!');
         return redirect()
@@ -98,6 +99,39 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return response()->json([$id]);
+    }
+
+    private function insertOrUpdate(Request $request, $id = null)
+    {
+        $rules = array(
+            'name'       => 'required|max:100',
+            'email' => 'required|email',
+            'password' => 'required'
+        );
+       
+        $mandatory_fields = array(
+            'name',
+            'email',
+        );
+
+        $validated = $request->validate($rules);
+
+        if (isset($id)) {
+            $user = User::find($id);
+        } else {
+            $user = new User;
+        }
+        
+        foreach ($mandatory_fields as $model_field) {
+            $user->$model_field       = $request->input($model_field);
+        }
+        if($user->password !== "●●●●") {
+            $user->password = Hash::make($request->input('password'));
+        }
+        
+        $user->save();
     }
 }

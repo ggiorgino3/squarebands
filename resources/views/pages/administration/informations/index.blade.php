@@ -11,7 +11,9 @@
         const ROUTE_POST = "{{ route('informations.store') }}";
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="{{ asset('js/informations.js') }}" rel="stylesheet" ></script>    
+    <script src="{{ asset('js/informations.js') }}"></script>    
+    <script src="{{ asset('js/blockui.js') }}"></script>
+
     <script>
         $(document).ready(function() {
 

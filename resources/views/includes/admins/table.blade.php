@@ -27,7 +27,12 @@
                     <tr>
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
-                        <td><a href="{{ route('admins.edit', $admin->id) }}" class="btn btn-default btn-sm">Edit</a></td>
+                        <td>
+                            <a data-id="{{$admin->id}}" href="{{ route('admins.edit', $admin->id) }}" class="btn btn-default btn-sm">Edit</a>
+                            @if (Auth::id() !== $admin->id)
+                            <a id="delete" data-id="{{$admin->id}}" class="btn btn-default btn-sm">Delete</a>
+                            @endif
+                        </td>
                     </tr>
 
                 @endforeach

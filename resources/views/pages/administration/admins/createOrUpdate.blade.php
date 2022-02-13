@@ -36,7 +36,7 @@
             {{ Form::text('email', Request::old('email'), ['required' => true]) }}
             
             {{ Form::label('password', 'Password', ['class' => 'px-0']) }}
-            {{ Form::password('password', Request::old('password'), ['required' => true]) }}
+            {{ Form::input('password', 'password', "●●●●", ['required' => true] ) }}
         </div>
     </div>
    
