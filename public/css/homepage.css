@@ -2,15 +2,22 @@ i.social_icon {
     font-size: 3rem;
 }
 
+[id^="social"] {
+    transition: color 0.3s;
+}
+
 #social_youtube-square:hover {
     color: #FF0000;
 }
+
 #social_facebook-square:hover {
     color: #4267B2;
 }
+
 #social_instagram-square:hover {
     color: #E1306C;
 }
+
 #social_spotify:hover {
     color: #1DB954;
 }

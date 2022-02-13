@@ -5,7 +5,7 @@
             <div class="w-100">
                 <small>MAIN MENU</small>
                 <a href="{{URL::to('/')}}">
-                    <span class="float-end"><i class="fa-solid fa-home mx-2"></i></span>
+                    <span class="float-end text-white"><i class="fa-solid fa-home mx-2"></i></span>
                 </a>
             </div>
         </li>

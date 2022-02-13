@@ -9,6 +9,7 @@
 
 <body>
     <div class="back">
+        <h1 class="admin_title div-center ">Administration Area</h1>
         <div class="div-center overflow-hidden">
 
             <div class="card">

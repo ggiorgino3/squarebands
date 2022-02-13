@@ -101,6 +101,10 @@ $(document).on("click", "#create", function () {
     const id = $(this).data('id_elem'); 
    
     const tr = $(this).closest('tr');
+    $(tr).block({ 
+        message: '<h4>Processing</h4>', 
+        css: { border: '1px solid #a00' } 
+    }); 
     const meta_key = $("input#key", tr).val();
     const title = $("input#title", tr).val();
     const meta_value = $("input#value", tr).val();
@@ -111,8 +115,10 @@ $(document).on("click", "#create", function () {
         url: ROUTE_POST +'/' + id,
         data: {id: id, meta_key: meta_key, title: title, meta_value: meta_value, visible: visible },
         success: () => alert("Information updated successfully"),
-        //dataType: dataType
-      });
+        complete: () => {
+            $(tr).unblock();
+        }
+    });
  });
 
 
@@ -125,11 +131,8 @@ $(document).on("click","#delete", function () {
         url: ROUTE_POST +'/' +  id,
         data: {id: id},
         success: function () {
-            
             alert("Information deleted successfully");
             tr.remove();
-
         }
-        //dataType: dataType
       });
  });
