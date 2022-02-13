@@ -13,7 +13,7 @@ class ConcertController extends Controller
     public function frontendIndex()
     {
         return view('pages.concerts')
-            ->withConcerts(Concert::all())
+            ->withConcerts(Concert::paginate(10))
             ->withBandName(
                 Option::where('meta_key', 'band_name')->value('meta_value')
             );

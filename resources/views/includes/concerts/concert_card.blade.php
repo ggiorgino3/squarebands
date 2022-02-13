@@ -1,8 +1,7 @@
-<div class="row my-4">
-    <div class="card w-100 concert_bg_img">
-        <div class="row text-center p-4">
-            <h1>{{ $concert->name}}</h1> <br/>
-            <h2>{{ $bandName}}</h2>
+<div class="row my-4 justify-center">
+    <div class="card w-75 concert_bg_img text-white rounded_custom">
+        <div class="row text-center px-4 pt-2">
+            <h1 >{{ $concert->name}}</h1> <br/>
         </div>
         <div class="row concert_info align-content-center">
             <div class="col-6 text-start px-4">

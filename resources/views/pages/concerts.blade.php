@@ -10,4 +10,7 @@
     @foreach ($concerts as $concert)
         @include('includes.concerts.concert_card')
     @endforeach
+    <div class="text-center">
+        {!! $concerts->links() !!}
+    </div>
 @endsection
