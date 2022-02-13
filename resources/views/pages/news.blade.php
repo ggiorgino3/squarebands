@@ -24,4 +24,5 @@
         </div>
     </div>
     @endforeach
+    {{ $newses->links(); }}
 @endsection

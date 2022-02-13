@@ -13,7 +13,7 @@ class NewsController extends Controller
     {
         return view('pages.news')
                 ->withNewses(
-                    News::where('status', 'publish')->orderBy('updated_at', 'desc')->get()
+                    News::where('status', 'publish')->orderBy('updated_at', 'desc')->paginate(15)
                 );
     }
 
@@ -64,6 +64,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
+        return view('pages.news.view')
+                ->withNews(News::find($id));
     }
 
     /**
