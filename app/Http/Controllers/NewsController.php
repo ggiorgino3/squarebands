@@ -8,6 +8,15 @@ use Session;
 
 class NewsController extends Controller
 {
+
+    public function frontendIndex()
+    {
+        return view('pages.news')
+                ->withNewses(
+                    News::where('status', 'publish')->orderBy('updated_at', 'desc')->get()
+                );
+    }
+
     /**
      * Display a listing of the resource.
      *

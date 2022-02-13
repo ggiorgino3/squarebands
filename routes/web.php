@@ -29,6 +29,16 @@ Route::get(
     [ConcertController::class, "show"]
 )->name('concerts.single');
 
+Route::get(
+    '/news',
+    [NewsController::class, "frontendIndex"]
+)->name('pages.news');
+
+Route::get(
+    '/news/{id}',
+    [NewsController::class, "show"]
+)->name('news.single.show');
+
 Route::view('/photo_gallery', 'pages.photos');
 
 Route::get(

@@ -13,8 +13,11 @@
     <div class="row mx-5 w-100">
         <ul class="nav my-4 justify-content-between">
             <?php 
-                $parsedUrl = parse_url(URL::current())['path'];
-                $parsedUrl = explode('/', $parsedUrl);
+                $parsedUrl = parse_url(URL::current());
+                if(isset($parsedUrl['path'])) {
+                    $parsedUrl_path = $parsedUrl['path'];
+                    $parsedUrl = explode('/', $parsedUrl_path);
+                }
             ?>
             @foreach ($pages as $title => $url)
                 
