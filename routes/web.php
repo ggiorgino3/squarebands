@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ConcertController;
@@ -73,7 +74,9 @@ Route::prefix('administration')->group(
                         'concerts' => ConcertController::class,
                         'contacts' => ContactController::class,
                         'albums' => AlbumController::class,
-                        'informations' => InformationController::class
+                        'informations' => InformationController::class,
+                        'admins' => AdminController::class
+
                     ]
                 );
             }

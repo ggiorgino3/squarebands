@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Information;
 use App\Models\Option;
-use App\Models\Options;
 use Illuminate\Http\Request;
 use Response;
 use Session;

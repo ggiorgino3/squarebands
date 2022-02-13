@@ -18,13 +18,13 @@ class SidebarAdminComposer
     public function __construct()
     {
         $this->macromenus = array(
-            "MAIN MENU" => array(
+            "ADMINISTRATORS" => array(
                 array(
-                     "url" => "$this->base_url",
-                     "icon" => 'gauge',
-                     "title" => 'Dashboard',
+                     "url" => "$this->base_url/admins",
+                     "icon" => 'user',
+                     "title" => 'All administrators',
                  ),
-             ),
+            ),
            "CONCERTS" => array(
                array(
                     "url" => "$this->base_url/concerts",

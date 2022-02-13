@@ -2,7 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\Models\Options;
+use App\Models\Option;
 use Illuminate\View\View;
 
 class BaseComposer
@@ -29,10 +29,10 @@ class BaseComposer
         );
 
         $this->socials = array(
-           "facebook-square" => Options::where('meta_key', 'fb_link')->value('meta_value'),
-           "instagram-square" => Options::where('meta_key', 'ig_link')->value('meta_value'),
-           "spotify" => Options::where('meta_key', 'spotify_url')->value('meta_value'),
-           "youtube-square" => Options::where('meta_key', 'yt_channel')->value('meta_value')
+           "facebook-square" => Option::where('meta_key', 'fb_link')->value('meta_value'),
+           "instagram-square" => Option::where('meta_key', 'ig_link')->value('meta_value'),
+           "spotify" => Option::where('meta_key', 'spotify_url')->value('meta_value'),
+           "youtube-square" => Option::where('meta_key', 'yt_channel')->value('meta_value')
         );
     }
 
