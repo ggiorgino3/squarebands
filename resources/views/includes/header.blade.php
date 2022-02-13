@@ -12,8 +12,13 @@
     </div>
     <div class="row mx-5 w-100">
         <ul class="nav my-4 justify-content-between">
+            <?php 
+                $parsedUrl = parse_url(URL::current())['path'];
+                $parsedUrl = explode('/', $parsedUrl);
+            ?>
             @foreach ($pages as $title => $url)
-                <li class="mx-4"><a href="/{{ $url }}">{{ $title }}</a></li>
+                
+                <li class="mx-4"><a class="{{ isset($parsedUrl[1]) && $parsedUrl[1] == $url ? 'text-decoration-underline' : '' }}" href="/{{ $url }}">{{ $title }}</a></li>
             @endforeach
         </ul>
     </div>

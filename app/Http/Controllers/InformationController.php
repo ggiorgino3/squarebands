@@ -21,6 +21,12 @@ class InformationController extends Controller
                 ->withOptions(Option::all());
     }
 
+    public function frontendIndex()
+    {
+        return view('pages.informations')
+                ->withInformations(Option::where('visible_on_frontend', 1)->get());
+    }
+
     /**
      * Store a newly created resource in storage.
      *

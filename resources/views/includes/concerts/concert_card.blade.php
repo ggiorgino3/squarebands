@@ -18,7 +18,7 @@
                     <h2><a href="{{ $concert->ticket_link }}">Buy Now!</a></h2>
                 @endif
                 <h4>
-                    <a href="{{ route('concerts.show', $concert->id) }}">
+                    <a href="{{ route('concerts.single', $concert->id) }}">
                         Show More
                     </a>
                 </h4>

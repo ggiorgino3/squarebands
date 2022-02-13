@@ -38,7 +38,12 @@ Route::get(
 Route::view('/videos', 'pages.videos');
 Route::view('/songs', 'pages.songs');
 Route::view('/contacts', 'pages.contacts');
-Route::view('/informations', 'pages.informations');
+
+Route::get(
+    '/informations',
+    [InformationController::class, "frontendIndex"]
+)->name('informations');
+
 //phpcs:enable
 
 Route::prefix('administration')->group(
