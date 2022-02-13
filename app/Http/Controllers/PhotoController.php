@@ -18,7 +18,7 @@ class PhotoController extends Controller
     public function index()
     {
         $photos = Photo::all();
-        return view('pages.administration.photos')
+        return view('pages.administration.photos.index')
             ->withPhotos($photos)
             ->withCountDividedPhotos(ceil(count($photos) / 3));
     }
