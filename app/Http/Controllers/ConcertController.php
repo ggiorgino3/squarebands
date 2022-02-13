@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Concert;
+use App\Models\Option;
 use Illuminate\Http\Request;
 use Session;
 
 class ConcertController extends Controller
 {
+
+    public function frontendIndex()
+    {
+        return view('pages.concerts')
+            ->withConcerts(Concert::all())
+            ->withBandName(
+                Option::where('meta_key', 'band_name')->value('meta_value')
+            );
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +38,8 @@ class ConcertController extends Controller
     public function create()
     {
         return view('pages.administration.concerts.createOrUpdate')
-                ->withRoute('concerts.store')
-                ->withElement(array('id' => 'name', 'title' => 'concert'));
+            ->withRoute('concerts.store')
+            ->withElement(array('id' => 'name', 'title' => 'concert'));
     }
 
     /**
@@ -54,7 +65,8 @@ class ConcertController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('includes.concerts.view_concert')
+                ->withConcert(Concert::find($id));
     }
 
     /**
@@ -86,7 +98,7 @@ class ConcertController extends Controller
 
         Session::flash('message', 'Concert updated successfully!');
         return redirect()->route('concerts.edit', ['concert' => $id])
-                ->withInput();
+            ->withInput();
     }
 
     /**

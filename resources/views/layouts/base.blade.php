@@ -4,7 +4,7 @@
 <head>
     @include('includes.head')
     @stack('styles')
-
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/homepage.css') }}">
 </head>
 
 <body>

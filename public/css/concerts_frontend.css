@@ -1,0 +1,10 @@
+.concert_bg_img {
+    background-image: url('./../assets/concerts/concert_bg_img.jpeg');
+    background-repeat: no-repeat;
+    background-position: 55% 100%;
+    background-size: 38%;
+}
+
+.concert_info {
+    min-height: 200px;
+}

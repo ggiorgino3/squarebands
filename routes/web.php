@@ -13,10 +13,16 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\VideoController;
 use App\Models\Album;
+use App\Models\Concert;
 use Illuminate\Support\Facades\Route;
 
 //phpcs:disable
 Route::view('/', "pages.homepage")->name("home");
+
+Route::get(
+    '/concerts',
+    [ConcertController::class, "frontendIndex"]
+)->name('pages.concerts');
 Route::view('/concerts', 'pages.concerts');
 Route::view('/news', 'pages.news');
 Route::view('/photo_gallery', 'pages.photos');
@@ -76,7 +82,6 @@ Route::prefix('administration')->group(
                         'albums' => AlbumController::class,
                         'informations' => InformationController::class,
                         'admins' => AdminController::class
-
                     ]
                 );
             }
