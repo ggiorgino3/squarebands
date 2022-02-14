@@ -48,11 +48,15 @@ Route::get(
 
 Route::view('/videos', 'pages.videos');
 
-
 Route::get(
     '/songs',
     [SongController::class, "frontendIndex"]
 )->name('songs');
+
+Route::get(
+    '/songs/{id}',
+    [SongController::class, "show"]
+)->name('song.show');
 
 Route::get(
     '/contacts',

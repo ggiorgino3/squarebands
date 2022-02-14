@@ -9,7 +9,11 @@
             @foreach ($album->songs as $song)
                 <div class="row">
                     <li>
-                        <div class="w-100"> {{ $song->name }}
+                        <div class="w-100"> 
+                            <a href=" {{ route('song.show', $song->id) }}">
+                                {{ $song->name }}
+                            </a>
+                            
                             <span class="float-end">{{ $song->duration }}</span>
                          </div>
                     </li>

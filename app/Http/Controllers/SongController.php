@@ -61,7 +61,8 @@ class SongController extends Controller
      */
     public function show($id)
     {
-        
+        return view('pages.songs.view')
+            ->withSong(Song::find($id));
     }
 
     /**
