@@ -47,7 +47,11 @@ Route::get(
 )->name('photogallery');
 Route::view('/videos', 'pages.videos');
 Route::view('/songs', 'pages.songs');
-Route::view('/contacts', 'pages.contacts');
+
+Route::get(
+    '/contacts',
+    [ContactController::class, "frontendIndex"]
+)->name('contacts');
 
 Route::get(
     '/informations',

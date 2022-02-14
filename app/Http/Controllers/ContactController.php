@@ -18,6 +18,12 @@ class ContactController extends Controller
         return view('pages.administration.contacts.index')
             ->withContacts(Contact::paginate(9));
     }
+    
+    public function frontendIndex()
+    {
+        return view('pages.contacts.frontendIndex')
+            ->withContacts(Contact::paginate(12));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,16 +51,6 @@ class ContactController extends Controller
         return redirect()->route('contacts.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
