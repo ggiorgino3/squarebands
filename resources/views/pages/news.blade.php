@@ -13,7 +13,7 @@
                 </h1>
                 <p class="card-text">{{mb_strimwidth( $news->description, 0, 100, "...") }}</p>
             </div>
-            <footer class="blockquote-footer px-2">
+            <footer class="blockquote-footer px-2 mt-2">
                 <span>
                     {{ date('l, jS F Y', strtotime($news->updated_at) ) }}
                 </span>

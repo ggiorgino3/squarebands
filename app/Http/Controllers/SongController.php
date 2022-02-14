@@ -20,6 +20,12 @@ class SongController extends Controller
                 ->withSongs(Song::all());
     }
 
+    public function frontendIndex()
+    {
+        return view('pages.songs.frontendIndex')
+                ->withAlbums(Album::paginate(6));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -55,7 +61,7 @@ class SongController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -121,6 +127,7 @@ class SongController extends Controller
             'description'       => 'required',
             'uri' => 'required|url',
             'genre' => 'required',
+            'duration' => 'nullable|max:5',
             'type' => 'nullable|max:50',
             'tags' => 'nullable|max:100',
             'album_id' => 'nullable|exists:album',
@@ -131,11 +138,11 @@ class SongController extends Controller
             'description',
             'uri',
             'genre',
+            'duration'
         );
         $optional_fields = array(
             'type',
             'tags',
-            'album_id',
         );
         $validated = $request->validate($rules);
 
@@ -154,6 +161,8 @@ class SongController extends Controller
                 $song->$field       = $request->input($field);
             }
         }
+
         $song->save();
+        Album::find($request->input('album'))->songs()->save($song);
     }
 }

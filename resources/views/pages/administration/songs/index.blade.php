@@ -1,6 +1,6 @@
 @extends('layouts.base_admin')
 @section('content')
-    @include('includes.songs.table', ['songs' => $songs])
+    @include('includes.songs.table')
 @endsection
 
 

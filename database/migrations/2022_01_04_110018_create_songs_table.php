@@ -31,6 +31,7 @@ class CreateSongsTable extends Migration
                 );                
                 $table->string('type', 50)->default('local');
                 $table->string('tags', 100)->nullable();
+                $table->string('duration', 5)->nullable();
                 $table->foreignId('album_id')->nullable()->constrained();
 
                 $table->timestamps();

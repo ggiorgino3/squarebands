@@ -26,6 +26,13 @@
         </div>
 
         <div class="my-2">
+            {{ Form::label('duration', 'Duration') }}
+        </div>
+        <div class="my-2">
+            {{ Form::text('duration', Request::old('duration', isset($model) ? $model->duration : ''), ['placeholder' => "Format e.g. mm:ss"]) }}
+        </div>
+
+        <div class="my-2">
             {{ Form::label('tags', 'Song Tags') }}
         </div>
         <div class="my-2 ">
