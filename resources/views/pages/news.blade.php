@@ -6,7 +6,7 @@
     </div>
     @foreach ($newses as $news)
     <div class="col-4 ">
-        <div class="card">
+        <div class="card bg-dark">
             <div class="card-body">
                 <h1 class="card-title">
                     <a href="{{ route('news.single.show', $news->id) }}">{{ $news->title }}</a>

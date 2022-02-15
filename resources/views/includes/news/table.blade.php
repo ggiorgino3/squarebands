@@ -4,7 +4,7 @@
     </div>
     <?php use \App\Http\Controllers\NewsController; ?>
     <div class="col-md-2">
-        <a href="{{ route('news.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New News</a>
+        <a href="{{ route('news.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Create New News</a>
     </div>
     <div class="col-md-12">
         <hr>

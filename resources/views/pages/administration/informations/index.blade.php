@@ -4,6 +4,9 @@
         .icons {
             font-size: 1.5rem
         }
+        .form-control, .form-control:focus {
+            background-color: whitesmoke
+        }
     </style>
 @endpush
 @push('scripts')
@@ -42,7 +45,10 @@
 
             options.forEach(option => $('tbody').append(generate_row(option)));
 
-            $('thead, tfoot').on('click', '.addRow', function() {
+            $('thead').on('click', '.addRow', function() {
+                $('tbody').prepend(generate_row());
+            })
+            $('tfoot').on('click', '.addRow', function() {
                 $('tbody').append(generate_row());
             })
         });

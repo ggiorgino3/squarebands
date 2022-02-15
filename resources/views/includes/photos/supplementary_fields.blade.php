@@ -2,13 +2,20 @@
 @section('form_content')
     <div class="form-group required">
         <div class="my-4">
-            {{ Form::label('caption', 'Caption') }}
+            {{ Form::label('caption', 'Caption', ['class' => 'd-block']) }}
             {{-- <h5><label for="caption">Caption</label> </h5> --}}
             {{-- <input required type="text" name="caption" id="caption" /> --}}
-            {{ Form::text('caption', Request::old('caption', isset($model) ? $model->caption : ''), ['required' => 'required']) }}
+            {{ Form::text('caption', Request::old('caption', isset($model) ? $model->caption : ''), ['required' => 'required', 'class' => 'w-50']) }}
         </div>
         <div class="my-4">
-            {{ Form::label('photo', 'Photo') }}
+            <div>
+                {{ Form::label('photo', 'Photo') }}
+            </div>
+            @isset($model->uri)
+                <div class="w-50 my-2">
+                    <img loading="lazy" src="{{ $model->uri }}" class="w-100 image shadow-1-strong rounded mb-4" alt="{{ $model->name }}" />
+                </div>
+            @endisset
             {{ Form::file('photo', ['required' => 'required'] ) }}
         </div>
     </div>

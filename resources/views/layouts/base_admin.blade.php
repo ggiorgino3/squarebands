@@ -22,12 +22,7 @@
             </div>
 
         </div><!-- Main Col END -->
-
     </div><!-- body-row END -->
-
-    <footer class="row text-center">
-        @include('includes.footer')
-    </footer>
 </body>
 
 </html>

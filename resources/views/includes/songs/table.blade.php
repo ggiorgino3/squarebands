@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-md-2">
-        <a href="{{ route('songs.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Song</a>
+        <a href="{{ route('songs.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Create New Song</a>
     </div>
     <div class="col-md-12">
         <hr>
@@ -16,20 +16,19 @@
         <table class="table">
             <thead>
                 <th>Name</th>
+                <th>Album</th>
                 <th></th>
             </thead>
-
             <tbody>
-                
                 @foreach ($songs as $song)
-                    
                     <tr>
                         <td>{{ $song->name }}</td>
-                        <td><a href="{{ route('songs.show', $song->id) }}" class="btn btn-default btn-sm">View</a> <a href="{{ route('songs.edit', $song->id) }}" class="btn btn-default btn-sm">Edit</a></td>
+                        <td>{{ $song->album->title ?? '-' }}</td>
+                        <td>
+                            <a href="{{ route('songs.edit', $song->id) }}" class="btn btn-default btn-sm">Edit</a>
+                        </td>
                     </tr>
-
                 @endforeach
-
             </tbody>
         </table>
 

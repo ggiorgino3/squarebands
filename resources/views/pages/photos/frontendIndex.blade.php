@@ -12,7 +12,7 @@
             </div>
         @endforeach
     </div>
-    <div class="row navigation_custom m-0">
+    <div class="d-flex justify-center my-3">
         {!! $photos->links() !!}
     </div>
     

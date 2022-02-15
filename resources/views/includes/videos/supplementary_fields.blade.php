@@ -2,8 +2,15 @@
 @section('form_content')
     <div class="form-group required">
         <div class="my-4">
-            {{ Form::label('video', 'Video') }}
-            {{ Form::file('video', ['required' => 'required'] ) }}
+            <div>
+                {{ Form::label('video', 'Video') }}
+            </div>
+            @isset($model->uri)
+            <video class="w-50 d-block rounded" loading="lazy" controls preload="metadata">
+                <source src="{{ $model->uri }}#t=4"  type="video/mp4">
+            </video>
+            @endisset
+            {{ Form::file('video', ['required' => 'required', 'class' => 'my-3'] ) }}
         </div>
     </div>
     <div class="form-group">

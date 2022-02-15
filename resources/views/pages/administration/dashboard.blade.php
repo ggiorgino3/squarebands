@@ -16,7 +16,7 @@
                     <h1>Last 3 published news</h1>
                 </div>
                 <div class="col-3">
-                    <a href="{{ route('news.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create
+                    <a href="{{ route('news.create') }}" class="btn btn-block btn-outline-secondary btn-h1-spacing">Create
                         News</a>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-3">
                     <a href="{{ route('concerts.create') }}"
-                        class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create Concert</a>
+                        class="btn  btn-block btn-outline-secondary btn-h1-spacing">Create Concert</a>
                 </div>
             </div>
             @include("includes.dashboard.table", ['elements' => $lastThreeConcerts, 'columns' => $concertsColumns, 'route'
@@ -44,7 +44,7 @@
                     <h1>Last 3 uploaded albums</h1>
                 </div>
                 <div class="col-3">
-                    <a href="{{ route('albums.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create
+                    <a href="{{ route('albums.create') }}" class="btn  btn-block btn-outline-secondary btn-h1-spacing">Create
                         Album</a>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     <h1>Last 3 uploaded songs</h1>
                 </div>
                 <div class="col-3">
-                    <a href="{{ route('songs.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Upload new
+                    <a href="{{ route('songs.create') }}" class="btn  btn-block btn-outline-secondary btn-h1-spacing">Upload new
                         song</a>
                 </div>
             </div>

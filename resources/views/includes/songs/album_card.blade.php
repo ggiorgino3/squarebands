@@ -1,4 +1,4 @@
-<div class="card hstack p-2 my-2">
+<div class="card bg-dark hstack p-2 my-2">
     <div class="px-2 me-3 text-center" style="max-width: 200px">
         <img width="100" src="{{ $album->img ?? asset('assets/album/vynil.png') }}" />
         <h2 class="my-2">{{ $album->title }}</h2>

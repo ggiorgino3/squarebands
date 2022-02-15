@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-md-2">
-        <a href="{{ route('videos.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Insert new
+        <a href="{{ route('videos.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Insert new
             video</a>
     </div>
     <div class="col-md-12">
@@ -21,9 +21,9 @@
             <div class="row">
                 @for ($j = 0; $j < count($videos); $j++)
                     <div class="col-lg-4 mb-4 mb-lg-0 container">
-                        <video class="w-100 rounded" loading="lazy" preload="metadata">
-                            <source src="{{ $videos[$j]->uri }}#t=4" type="video/mp4">
-                          </video>
+                        <video class="w-100 rounded" loading="lazy" controls preload="metadata">
+                            <source src="{{ $videos[$j]->uri }}#t=4"  type="video/mp4">
+                        </video>
                         {{-- <img   class="w-100 image shadow-1-strong rounded mb-4"
                         alt="{{ $videos[$j]->name }}" /> --}}
                         <div class="overlay m-0 row">

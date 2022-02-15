@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-md-2">
-        <a href="{{ route('concerts.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Concert</a>
+        <a href="{{ route('concerts.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Create New Concert</a>
     </div>
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>

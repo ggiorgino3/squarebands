@@ -8,7 +8,7 @@
             <h1>All contacts</h1>
         </div>
         <div class="col-md-2">
-            <a href="{{ route('contacts.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Contact</a>
+            <a href="{{ route('contacts.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Create New Contact</a>
         </div>
         <div class="col-md-12">
             <hr>

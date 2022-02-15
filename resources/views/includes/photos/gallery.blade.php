@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-md-2">
-        <a href="{{ route('photos.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Insert new
+        <a href="{{ route('photos.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Insert new
             photo</a>
     </div>
     <div class="col-md-12">
@@ -26,7 +26,7 @@
                         <img loading="lazy" src="{{ $photos[$j]->uri }}" class="w-100 image shadow-1-strong rounded mb-4"
                         alt="{{ $photos[$j]->name }}" />
                         <div class="overlay m-0 row">
-                            <a class="col-6 p-0" href="{{ route('photos.show', $photos[$j]->id) }}"><div class="" >View</div></a>
+                            <a class="col-6 p-0" target="_blank" href="{{ $photos[$j]->uri }}"><div class="" >View  <i class="fa-solid fa-arrow-up-right-from-square mb-2 ms-1 position-absolute" style="font-size: 0.8rem"></i></div></a>
                             <a class="col-6 p-0" href="{{ route('photos.edit', $photos[$j]->id) }}"><div class="" >Edit</div></a>
                         </div>
 

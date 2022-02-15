@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('css/homepage.css') }}">
 </head>
 
-<body class="d-flex flex-column min-vh-100 text-white">
+<body class="d-flex flex-column min-vh-100 bg-dark text-white">
     <div class="container-fluid home_bg_img m-0 p-0">
 
         <header class="row sticky-top justify-center mx-0 mb-4">

@@ -1,5 +1,5 @@
 <div class="row my-4 justify-center">
-    <div class="card w-75 concert_bg_img text-white rounded_custom">
+    <div class="card bg-dark w-75 concert_bg_img text-white rounded_custom">
         <div class="row text-center px-4 pt-2">
             <h1 >{{ $concert->name}}</h1> <br/>
         </div>

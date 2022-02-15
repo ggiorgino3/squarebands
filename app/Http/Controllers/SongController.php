@@ -80,7 +80,7 @@ class SongController extends Controller
             ->with(compact('route'))
             ->withModel($song)
             ->withAlbums($this->buildAlbumsArray())
-            ->withElement(array('id' => 'name', 'title' => 'concert'));
+            ->withElement(array('id' => 'name', 'title' => 'song'));
     }
 
     /**
@@ -96,8 +96,8 @@ class SongController extends Controller
 
         Session::flash('message', 'Song updated successfully!');
         return redirect()
-                ->route('songs.edit', ['song' => $id])
-                ->withInput();
+            ->route('songs.edit', ['song' => $id])
+            ->withInput();
     }
 
     /**
@@ -111,7 +111,8 @@ class SongController extends Controller
         //
     }
 
-    private function buildAlbumsArray() {
+    private function buildAlbumsArray()
+    {
         $albums = array('' => '-');
         $albums_temp = Album::all();
         foreach ($albums_temp as $temp_album) {
@@ -164,6 +165,8 @@ class SongController extends Controller
         }
 
         $song->save();
-        Album::find($request->input('album'))->songs()->save($song);
+        if ($request->input('album')) {
+            Album::find($request->input('album'))->songs()->save($song);
+        }
     }
 }

@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-md-2">
-        <a href="{{ route('albums.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Album</a>
+        <a href="{{ route('albums.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Create New Album</a>
     </div>
     <div class="col-md-12">
         <hr>
@@ -27,7 +27,9 @@
                         <td>{{ $album->title }}</td>
                         <td>{{ $album->genre }}</td>
                         <td>{{ date('M j, Y', strtotime($album->publish_date)) }}</td>
-                        <td><a href="{{ route('albums.show', $album->id) }}" class="btn btn-default btn-sm">View</a> <a href="{{ route('albums.edit', $album->id) }}" class="btn btn-default btn-sm">Edit</a></td>
+                        <td>
+                            <a href="{{ route('albums.edit', $album->id) }}" class="btn btn-default btn-sm">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

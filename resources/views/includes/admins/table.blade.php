@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-md-2">
-        <a href="{{ route('admins.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Administrator</a>
+        <a href="{{ route('admins.create') }}" class="btn btn-lg btn-block btn-outline-secondary btn-h1-spacing">Create New Administrator</a>
     </div>
     <div class="col-md-12">
         <hr>
