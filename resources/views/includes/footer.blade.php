@@ -1,1 +1,1 @@
-<div id="copyright text-right">© Copyright 2022 Gregorio Giorgino</div>
+<div id="copyright" class="mt-3">© Copyright 2022 - Gregorio Giorgino</div>

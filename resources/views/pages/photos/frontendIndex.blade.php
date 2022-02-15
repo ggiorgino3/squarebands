@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/frontend_gallery.css') }}">
 @endpush
 @section('content')
+    <h1> Photo Gallery </h1>
     <div class="row">
         @foreach ($photos as $photo)    
             <div class="col-lg-4 mb-4 mb-lg-0">

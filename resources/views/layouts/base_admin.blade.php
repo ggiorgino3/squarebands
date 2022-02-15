@@ -25,7 +25,7 @@
 
     </div><!-- body-row END -->
 
-    <footer class="row text-center fixed-bottom">
+    <footer class="row text-center">
         @include('includes.footer')
     </footer>
 </body>

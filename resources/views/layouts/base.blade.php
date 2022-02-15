@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('css/homepage.css') }}">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="container">
 
         <header class="row">
@@ -20,7 +20,7 @@
 
         
     </div>
-    <footer class="row text-center fixed-bottom">
+    <footer class="row text-center mt-auto mb-2">
         @include('includes.footer')
     </footer>
 </body>

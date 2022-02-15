@@ -20,6 +20,13 @@ class VideoController extends Controller
         return view('pages.administration.videos.index')
             ->withVideos($videos);
     }
+    
+    public function frontendIndex()
+    {
+        $videos = Video::paginate(10);
+        return view('pages.videos.frontendIndex')
+            ->withVideos($videos);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +64,7 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

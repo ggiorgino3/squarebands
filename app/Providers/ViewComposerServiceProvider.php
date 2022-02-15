@@ -30,7 +30,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'pages.homepage',
                 'pages.news*',
                 'pages.photos.frontendIndex',
-                'pages.videos',
+                'pages.videos*',
                 'pages.songs*',
                 'pages.informations',
                 'pages.contacts*'

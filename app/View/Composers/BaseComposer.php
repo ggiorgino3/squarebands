@@ -22,7 +22,7 @@ class BaseComposer
            "Concerts" => "concerts",
            "News" => "news",
            "Photo Gallery" => "photo_gallery",
-           "Videos" => "videos",
+           "Video Gallery" => "video_gallery",
            "Songs" => "songs",
            "Contacts" => "contacts",
            "Info" => "informations",

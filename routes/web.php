@@ -64,6 +64,11 @@ Route::get(
 )->name('contacts');
 
 Route::get(
+    '/video_gallery',
+    [VideoController::class, "frontendIndex"]
+)->name('videos');
+
+Route::get(
     '/informations',
     [InformationController::class, "frontendIndex"]
 )->name('informations');
