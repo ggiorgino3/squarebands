@@ -21,3 +21,58 @@ i.social_icon {
 #social_spotify:hover {
     color: #1DB954;
 }
+
+.home_bg_img {
+    background-image: url('./../assets/bg.jpeg');
+    min-height: 2500px;
+
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 0%;
+}
+
+.navbar.custom {
+    width: 97%;
+    border-radius: 0px 0px 50px 50px;
+}
+
+.filter-white {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(150%) contrast(103%);
+}
+
+a.menu:hover {
+    padding-bottom: 0.5rem;
+    color: rgb(96, 91, 228);
+    transition: color 0.5s;
+    border-bottom: 1px solid white;
+}
+
+.menu_active {
+    border-bottom: 1px solid white;
+}
+
+
+
+/* Customizing scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background:#41464b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
