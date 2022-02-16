@@ -49,7 +49,7 @@ Route::get(
 Route::view('/videos', 'pages.videos');
 
 Route::get(
-    '/songs',
+    '/albums_songs',
     [SongController::class, "frontendIndex"]
 )->name('songs');
 

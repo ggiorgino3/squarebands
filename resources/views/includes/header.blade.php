@@ -12,8 +12,7 @@
                 }
             ?>
             @foreach ($pages as $title => $url)
-                
-                <li class="mx-4"><a class="menu {{ isset($parsedUrl[1]) && $parsedUrl[1] == $url ? 'pb-2 menu_active' : '' }}" href="/{{ $url }}">{{ $title }}</a></li>
+                <li class="mx-4"><a class="menu {{ isset($parsedUrl[1]) && strpos($url,$parsedUrl[1]) ? 'pb-2 menu_active' : '' }}" href="{{ $url }}">{{ $title }}</a></li>
             @endforeach
         </ul>
         @foreach ($socials as $id => $url)
