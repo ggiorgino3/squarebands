@@ -63,6 +63,11 @@ Route::get(
     [ContactController::class, "frontendIndex"]
 )->name('contacts');
 
+Route::post(
+    '/contact_us',
+    [ContactController::class, "contactUsForm"]
+)->name('contact_us');
+
 Route::get(
     '/video_gallery',
     [VideoController::class, "frontendIndex"]

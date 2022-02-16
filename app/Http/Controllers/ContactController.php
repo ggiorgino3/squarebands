@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Mail;
 use Session;
 
 class ContactController extends Controller
@@ -37,6 +38,33 @@ class ContactController extends Controller
             ->withElement(array('id' => 'title', 'title' => 'contact'));
     }
 
+    public function contactUsForm(Request $request)
+    {
+        // Form validation
+        $this->validate(
+            $request,
+            [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'subject'=>'required',
+            'message' => 'required'
+            ]
+        );
+
+        $data = array('name'=>"Virat Gandhi");
+        Mail::send(
+            'mail',
+            $data,
+            function ($message) use ($request) {
+                $message->to('no.reply@dreamtheater.example', 'Contact Us Form')->subject(
+                    'Contact Us Formt'
+                );
+                $message->from($request->email, $request->name);
+            }
+        );
+        return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
+    }
     /**
      * Store a newly created resource in storage.
      *
