@@ -129,7 +129,6 @@ class PhotoController extends Controller
         $request->photo->move(public_path('photos'), $imageName);
         if (isset($id)) {
             $photo = Photo::find($id);
-            // TODO: implementare campo imageNaame nel db per evitare riscrittura img se già esistente
         } else {
             $photo = new Photo;
         }

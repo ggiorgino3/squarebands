@@ -127,7 +127,7 @@ class SongController extends Controller
         $rules = array(
             'name'       => 'required|max:50',
             'description'       => 'required',
-            'uri' => 'required|url',
+            'song' => 'required|mimes:mp3|max:10900',
             'genre' => 'required',
             'duration' => 'nullable|max:5',
             'type' => 'nullable|max:50',
@@ -138,7 +138,6 @@ class SongController extends Controller
         $mandatory_fields = array(
             'name',
             'description',
-            'uri',
             'genre',
             'duration'
         );
@@ -147,7 +146,8 @@ class SongController extends Controller
             'tags',
         );
         $validated = $request->validate($rules);
-
+        $songName = time().'.'.$request->song->extension();
+        $request->song->move(storage_path('app/public/songs'), $songName);
         if (isset($id)) {
             $song = Song::find($id);
         } else {
@@ -164,6 +164,7 @@ class SongController extends Controller
             }
         }
 
+        $song->uri = asset("storage/songs/$songName");
         $song->save();
         if ($request->input('album')) {
             Album::find($request->input('album'))->songs()->save($song);
