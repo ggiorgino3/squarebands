@@ -11,21 +11,76 @@
         </div>
     </div>
     <span class="vr"></span>
-    <div class="px-4 w-100">
-        <ol>
-            @foreach ($album->songs as $song)
-                <div class="row">
+    <div class="px-4 w-25">
+        {{-- <ol> --}}
+            <div id="black-player">
+                <div id="black-player-playlist">
+            @foreach ($album->songs as $i => $song)
+                        <div class="black-player-song amplitude-song-container amplitude-play-pause"
+                            data-amplitude-song-index="{{$i}}" data-amplitude-playlist="{{ $album_title_dashed }}">
+                            {{-- <img src="../album-art/soon-it-will-be-cold-enough.jpg"> --}}
+                            <div class="song-meta-container">
+                                <span class="individual-song-name">{{ $song->name }}</span>
+                                <span class="individual-song-artist">Dream Theater</span>
+                            </div>
+                        </div>
+                        
+                 
+
+                {{-- <div class="row">
                     <li>
-                        <div class="w-100"> 
+                        <div class="w-100">
                             <a href=" {{ route('song.show', $song->id) }}">
                                 {{ $song->name }}
                             </a>
-                            
-                            <span class="float-end">{{ $song->duration }}</span>
-                         </div>
+                            @if ($song->duration)
+                                <span class="float-end">
+                                    <div class="badge rounded-pill bg-info">
+                                        {{ $song->duration }}
+                                    </div>
+                                </span>
+                            @endif
+                        </div>
                     </li>
-                </div>
+                </div> --}}
             @endforeach
-        </ol>
+        </div>
+    </div>
+{{-- </ol> --}}
+    </div>
+    <div class="w-75">
+        <div id="black-player-controls">
+            <img data-amplitude-song-info="cover_art_url" data-amplitude-playlist="{{ $album_title_dashed }}"
+                class="playlist-album-art" />
+            <div class="black-player-controls-container">
+                <span data-amplitude-song-info="name" data-amplitude-playlist="{{ $album_title_dashed }}"
+                    class="song-name"></span>
+                <span data-amplitude-song-info="artist" data-amplitude-playlist="{{ $album_title_dashed }}"
+                    class="song-artist"></span>
+
+                <div id="progress-container-black">
+                    <input type="range" class="amplitude-song-slider"
+                        data-amplitude-playlist="{{ $album_title_dashed }}" />
+                    <progress id="song-played-progress-black" class="amplitude-song-played-progress"
+                        data-amplitude-playlist="{{ $album_title_dashed }}"></progress>
+                    <progress id="song-buffered-progress-black" class="amplitude-buffered-progress"
+                        value="0"></progress>
+                </div>
+
+                <div>
+                    <div class="amplitude-shuffle amplitude-shuffle-off"
+                        data-amplitude-playlist="{{ $album_title_dashed }}" id="shuffle-black"></div>
+                    <div class="amplitude-prev" data-amplitude-playlist="{{ $album_title_dashed }}"
+                        id="previous-black"></div>
+                    <div class="amplitude-play-pause" data-amplitude-playlist="{{ $album_title_dashed }}"
+                        id="play-pause-black">
+                    </div>
+                    <div class="amplitude-next" data-amplitude-playlist="{{ $album_title_dashed }}" id="next-black">
+                    </div>
+                    <div class="amplitude-repeat" data-amplitude-playlist="{{ $album_title_dashed }}"
+                        id="repeat-black"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
