@@ -2,7 +2,6 @@
 @push('scripts')
     <script src="{{ mix('js/amplitude.js') }}"></script>
     <script>
-
         var playlists = {
             <?php foreach ($albums as $album): ?>
             <?php $album_title_dashed = str_replace([' ', '&'], ['-', 'and'], strtolower($album->title)); ?> "{{ $album_title_dashed }}": {
@@ -12,7 +11,7 @@
                         "artist": "Dream Theater",
                         "album": "{{ $album->title }}",
                         "url": "{{ $song->uri }}",
-                        "cover_art_url": "",
+                        "cover_art_url": "{{asset('assets/album/album_bg.jpeg')}}",
                     },
                     <?php endforeach; ?>
                 ],
@@ -36,7 +35,8 @@
     <link rel="stylesheet" href="{{ asset('css/album.css') }}">
 @endpush
 @section('content')
-    @foreach ($albums as $album)
+    @foreach ($albums as $counter_album => $album)
+        <?php $album_title_dashed = str_replace([' ', '&'], ['-', 'and'], strtolower($album->title)); ?> 
         @include('includes.songs.album_card', ['album_title_dashed' => $album_title_dashed])
     @endforeach
 @endsection

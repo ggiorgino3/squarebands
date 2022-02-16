@@ -13,21 +13,20 @@
     <span class="vr"></span>
     <div class="px-4 w-25">
         {{-- <ol> --}}
-            <div id="black-player">
-                <div id="black-player-playlist">
-            @foreach ($album->songs as $i => $song)
-                        <div class="black-player-song amplitude-song-container amplitude-play-pause"
-                            data-amplitude-song-index="{{$i}}" data-amplitude-playlist="{{ $album_title_dashed }}">
-                            {{-- <img src="../album-art/soon-it-will-be-cold-enough.jpg"> --}}
-                            <div class="song-meta-container">
-                                <span class="individual-song-name">{{ $song->name }}</span>
-                                <span class="individual-song-artist">Dream Theater</span>
-                            </div>
+        <div id="black-player">
+            <div id="black-player-playlist">
+                @foreach ($album->songs as $id => $song)
+                    <div class="black-player-song amplitude-song-container amplitude-play-pause"
+                        data-amplitude-song-index="{{ $id }}"
+                        data-amplitude-playlist="{{ $album_title_dashed }}">
+                         <img src="{{asset('assets/album/album_bg.jpeg') }}">
+                        <div class="song-meta-container">
+                            <span class="individual-song-name">{{ $song->name }}</span>
+                            <span class="individual-song-artist">Dream Theater</span>
                         </div>
-                        
-                 
+                    </div>
 
-                {{-- <div class="row">
+                    {{-- <div class="row">
                     <li>
                         <div class="w-100">
                             <a href=" {{ route('song.show', $song->id) }}">
@@ -43,15 +42,15 @@
                         </div>
                     </li>
                 </div> --}}
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-{{-- </ol> --}}
+        {{-- </ol> --}}
     </div>
     <div class="w-75">
         <div id="black-player-controls">
             <img data-amplitude-song-info="cover_art_url" data-amplitude-playlist="{{ $album_title_dashed }}"
-                class="playlist-album-art" />
+                class="playlist-album-art" src="{{asset('assets/album/album_bg.jpeg')}}" />
             <div class="black-player-controls-container">
                 <span data-amplitude-song-info="name" data-amplitude-playlist="{{ $album_title_dashed }}"
                     class="song-name"></span>
