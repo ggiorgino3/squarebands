@@ -3,10 +3,18 @@
 
     <div class="form-group required">
         <div class="my-2">
-            {{ Form::label('uri', 'URI') }}
+            {{ Form::label('song', 'Song') }}
         </div>
         <div class="my-2">
-            {{ Form::text('uri', Request::old('uri', isset($model) ? $model->uri : ''), ['placeholder' => 'https://...', 'required' => 'required', 'class' => 'w-100']) }}
+            @isset($model->uri)
+                <div class="w-50 my-2">
+                    <audio controls>
+                        <source src="{{ $model->uri }}" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                      </audio>
+                </div>
+            @endisset
+            {{ Form::file('song', ['required' => 'required'] ) }}        
         </div>
 
         <div class="my-2">
