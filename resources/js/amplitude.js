@@ -1,0 +1,1 @@
+window.Amplitude = require('amplitudejs');
