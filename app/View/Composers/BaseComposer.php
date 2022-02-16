@@ -19,13 +19,13 @@ class BaseComposer
     public function __construct()
     {
         $this->pages = array(
-           "Concerts" => "concerts",
-           "News" => "news",
-           "Photo Gallery" => "photo_gallery",
-           "Video Gallery" => "video_gallery",
-           "Songs" => "songs",
-           "Contacts" => "contacts",
-           "Info" => "informations",
+           "Concerts" => route('concerts'),
+           "News" => route('pages.news'),
+           "Photo Gallery" => route('photogallery'),
+           "Video Gallery" => route('videos'),
+           "Songs" => route('songs'),
+           "Contacts" => route('contacts'),
+           "Info" => route('informations'),
         );
 
         $this->socials = array(
