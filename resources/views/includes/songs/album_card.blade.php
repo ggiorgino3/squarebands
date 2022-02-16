@@ -2,6 +2,13 @@
     <div class="px-2 me-3 text-center" style="max-width: 200px">
         <img width="100" src="{{ $album->img ?? asset('assets/album/vynil.png') }}" />
         <h2 class="my-2">{{ $album->title }}</h2>
+        <div class="text-center genre">
+            <div class="badge rounded-pill bg-secondary">
+                <img src="{{ asset('assets/album/hand.png') }}" alt="hand" />
+                {{ $album->genre }}
+                <img src="{{ asset('assets/album/hand.png') }}" alt="hand" />
+            </div>
+        </div>
     </div>
     <span class="vr"></span>
     <div class="px-4 w-100">
