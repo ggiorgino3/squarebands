@@ -14,16 +14,16 @@
 
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-                <div class="card-body">
+                <div class="card-body ">
                     <form method="POST" action="{{ route('administration.loginPost') }}">
                         @csrf
                         <div class="form-group my-2">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <input type="email" class="form-control bg-white" id="email" name="email" placeholder="Email">
                         </div>
                         <div class="form-group my-2">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password"
+                            <input type="password" class="form-control bg-white" id="password" name="password"
                                 placeholder="Password">
                         </div>
                         @if($errors->any())

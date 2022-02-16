@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table_mh table-striped">
     <thead>
         @foreach ($columns as $column_name)
             <th>{{ $column_name }} </th>
