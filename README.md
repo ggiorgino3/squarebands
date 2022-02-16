@@ -18,7 +18,6 @@ Make sure that:
   - N.B.: Before executing the following command, make sure that you must be in the root of the project  
 **`cp .env.example .env`**
 
-
 ### Start docker containers
 Open a terminal in the root of the project and type:  
 **`docker-compose up -d`**
