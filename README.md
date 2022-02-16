@@ -12,7 +12,6 @@ Make sure that:
 - Ports **80** and **3306** are not used by any other services - if they are, you can change it with other ports in the .env file
 - Composer is already installed on your computer
 
-
 ### Necessary step
 - Copy the .env.example file into .env file and change any parameter with values that you need
   - N.B.: Before executing the following command, make sure that you must be in the root of the project  
