@@ -36,6 +36,7 @@ npm run dev
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 sail artisan migrate
+sail artisan storage:link
 
 echo "DB::table('options')->insert(array('visible_on_frontend' => '1', 'title' => 'Band Name', 'meta_key' => 'band_name', 'meta_value' => 'Dream Theater'));" | sail tinker
 echo "DB::table('options')->insert(array('visible_on_frontend' => '1', 'title' => 'Band Country', 'meta_key' => 'band_country', 'meta_value' => 'America'));" | sail tinker
