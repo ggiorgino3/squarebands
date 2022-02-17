@@ -31,9 +31,10 @@ function generate_row(information) {
         "<td>" +
              `<div class="input-group my-1">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Value</span>
-                    </div>
-                    <input type='text' id="value" class='form-control' value='${information.value}' />` +
+                        <span class="input-group-text h-100" id="basic-addon1">Value</span>
+                    </div>`
+            + (information.visible ? `<textarea id='value' class='form-control'>${information.value}</textarea>` :
+                 `<input type='text' id='value' class='form-control' value='${information.value}' />`) +
         "</td>"+
         "<td class='align-middle'>";
         if(information.id) {
@@ -72,11 +73,15 @@ function initialize_information (information) {
 $(document).on("click", "#create", function () {
    
     const tr = $(this).closest('tr');
+
     const meta_key = $("input#key", tr).val();
     const title = $("input#title", tr).val();
     const meta_value = $("input#value", tr).val();
     const visible = + $("input#visible", tr).is(":checked");
-
+     $(tr).block({ 
+        message: '<h4>Processing</h4>', 
+        css: { border: '1px solid #a00' } 
+    }); 
     const new_info = {meta_key: meta_key, title: title, meta_value: meta_value, visible_on_frontend: visible };
     $.ajax({
         type: "POST",
@@ -89,8 +94,14 @@ $(document).on("click", "#create", function () {
             new_info.title = new_info.title;
             new_info.value = new_info.meta_value;
             new_info.visible = new_info.visible_on_frontend;
-            $('tbody').append(generate_row(new_info));
+            if(appendOnHead)
+                $('tbody').prepend(generate_row(new_info));
+            else
+                $('tbody').append(generate_row(new_info));
             tr.remove();
+        },
+        complete: () => {
+            $(tr).unblock();
         }
         //dataType: dataType
       });
@@ -126,6 +137,10 @@ $(document).on("click","#delete", function () {
     const id = $(this).data('id_elem'); 
     const tr = $(this).closest('tr');
 
+    $(tr).block({ 
+        message: '<h4>Processing</h4>', 
+        css: { border: '1px solid #a00' } 
+    }); 
     $.ajax({
         type: "DELETE",
         url: ROUTE_POST +'/' +  id,
@@ -133,6 +148,9 @@ $(document).on("click","#delete", function () {
         success: function () {
             alert("Information deleted successfully");
             tr.remove();
+        },
+        complete: () => {
+            $(tr).unblock();
         }
       });
  });
