@@ -76,7 +76,7 @@ $(document).on("click", "#create", function () {
 
     const meta_key = $("input#key", tr).val();
     const title = $("input#title", tr).val();
-    const meta_value = $("input#value", tr).val();
+    const meta_value = $("#value", tr).val();
     const visible = + $("input#visible", tr).is(":checked");
      $(tr).block({ 
         message: '<h4>Processing</h4>', 
@@ -118,7 +118,7 @@ $(document).on("click", "#create", function () {
     }); 
     const meta_key = $("input#key", tr).val();
     const title = $("input#title", tr).val();
-    const meta_value = $("input#value", tr).val();
+    const meta_value = $("#value", tr).val();
     const visible = + $("input#visible", tr).is(":checked");
 
     $.ajax({

@@ -9,7 +9,6 @@
         .form-control:focus {
             background-color: whitesmoke
         }
-
     </style>
 @endpush
 @push('scripts')
@@ -72,6 +71,7 @@
 
 @section('content')
     <h1>More Informations</h1>
+    
     <table class="table table-striped">
         <thead class="thead">
             @include('includes.informations.table_columns')

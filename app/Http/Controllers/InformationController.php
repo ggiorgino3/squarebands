@@ -23,8 +23,24 @@ class InformationController extends Controller
 
     public function frontendIndex()
     {
+        $bio = Option::where('meta_key', 'bio')->where('visible_on_frontend', 1)->first();
+        $members = Option::whereIn('meta_key', ['jp_description', 'jm_description', 'jl_description','jr_description','mm_description'])->where('visible_on_frontend', 1)->get();
+        
+        $ids_to_exclude = array();
+        if ($bio) {
+            $ids_to_exclude[] = $bio->id;
+        }
+        foreach ($members as $id => $member) {
+            $photo = Option::where('meta_key', $member->meta_key . '_url_photo')->first();
+            
+            $members[$id]->url_photo = $photo ? $photo->meta_value : "https://media.istockphoto.com/vectors/rock-and-roll-hand-vector-id486670843";
+            $ids_to_exclude[] = $member->id;
+        }
+                
         return view('pages.informations')
-                ->withInformations(Option::where('visible_on_frontend', 1)->get());
+            ->withBio($bio)
+            ->withMembers($members)
+            ->withInformations(Option::where('visible_on_frontend', 1)->whereNotIn('id', $ids_to_exclude)->get());
     }
 
     /**

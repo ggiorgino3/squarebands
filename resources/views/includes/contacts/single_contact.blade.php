@@ -18,7 +18,7 @@
                         <i class="fas fa-phone-alt pe-2 "></i>{{ $contact->phone }}       
                     </div>
                 </div>
-                <div class="row">
+                <div class="row my-2">
                     <div class="col-6">
                         <i class="fas fa-map-marker-alt pe-2"></i>{{ $contact->address }}        
                     </div>

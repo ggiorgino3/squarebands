@@ -44,11 +44,10 @@
         <div class="col-2">        </div>
     </div>
     <hr/>
-    <div class="row">
+    <div class="row justify-center">
         <h1>Some of our contacts</h1>
         @foreach ($contacts as $contact)
             @include("includes.contacts.single_contact")
         @endforeach
-
     </div>
 @endsection
