@@ -4,33 +4,44 @@
         <link href="{{ asset('css/contacts_index.css') }}" rel="stylesheet">
     @endpush
     <div class="row my-2 px-4 align-content-center">
+        <div class="col-2">        </div>
         <div class="col-8">
             <h1>Contact Us</h1>
-            <form method="post" action="{{ route('contact_us') }}">
-                @csrf
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" id="name">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" id="email">
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" class="form-control" name="phone" id="phone">
-                </div>
-                <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" class="form-control" name="subject" id="subject">
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea class="form-control" name="message" id="message" rows="4"></textarea>
-                </div>
-                <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
-            </form>
+
+            @if (Session::has('message'))
+                <div class="alert alert-info">{{ Session::get('message') }}</div>
+            @endif
+            @if($errors->any())
+                {!! implode('', $errors->all('<div>:message</div>')) !!}
+            @endif
+            {{ Form::open(['route' => 'contact_us' ]) }}
+            
+            <div class="form-group my-2 required">
+                {{ Form::label('name', 'Name', ['class' => 'px-0']) }}
+                {{ Form::text('name', Request::old('name'), ['class' =>"form-control text-white",'required' => true]) }}
+            </div>
+            <div class="form-group my-2 required">
+                {{ Form::label('email', 'Email', ['class' => 'px-0']) }}
+                {{ Form::text('email', Request::old('email'), ['class' =>"form-control text-white",'required' => true]) }}
+            </div>
+            <div class="form-group my-2 ">
+                {{ Form::label('phone', 'Phone', ['class' => 'px-0']) }}
+                {{ Form::text('phone', Request::old('phone'), ['class' =>"form-control text-white ",'required' => true]) }}
+            </div>
+            <div class="form-group my-2 required">
+                {{ Form::label('subject', 'Subject', ['class' => 'px-0']) }}
+                {{ Form::text('subject', Request::old('subject'), ['class' =>"form-control text-white",'required' => true]) }}
+            </div>
+            <div class="form-group my-2 required">
+                {{ Form::label('message', 'Message', ['class' => 'px-0']) }}
+                {{ Form::textarea('message', Request::old('message'), ['class' =>"form-control text-white",'required' => true]) }}
+            </div>
+            <div class="text-end py-2">
+                {{ Form::submit('Submit form', ['name' => 'submit', 'class' => 'btn btn-success']) }}
+            </div>
+            {{ Form::close() }}
         </div>
+        <div class="col-2">        </div>
     </div>
     <hr/>
     <div class="row">
