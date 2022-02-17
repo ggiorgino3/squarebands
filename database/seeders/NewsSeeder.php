@@ -16,7 +16,7 @@ class NewsSeeder extends Seeder
     public function run()
     {
         $news = News::factory()
-            ->count(5)
+            ->count(15)
             ->create();
 
             $news->each(
