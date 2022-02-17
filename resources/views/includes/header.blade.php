@@ -1,4 +1,4 @@
-<div class="navbar bg-dark custom">
+<div class="navbar bg-dark opacity-90 custom">
     <div class="navbar-inner hstack mt-2 w-100">
         <a id="logo" class="navbar-brand" href="/"> <img src="{{ asset('photos/logo.svg') }}" width="200px"
                 alt="Dream Theater Logo" class="d-inline-block align-middle mr-2 filter-white">

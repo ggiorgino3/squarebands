@@ -9,7 +9,7 @@
                 </a>
             </div>
         </li>
-        <a href="/administration" class="bg-dark list-group-item list-group-item-action">
+        <a href="/administration" class="bg-dark opacity-90 list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-start align-items-center text-light">
                 <i class="fa-solid fa-gauge mx-2"></i>
                 <span class="menu-collapsed">Dashboard</span>

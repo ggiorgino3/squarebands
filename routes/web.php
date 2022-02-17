@@ -16,8 +16,10 @@ use App\Models\Album;
 use App\Models\Concert;
 use Illuminate\Support\Facades\Route;
 
-//phpcs:disable
-Route::view('/', "pages.homepage")->name("home");
+Route::get(
+    '/',
+    [HomeController::class, "index"]
+)->name('home');
 
 Route::get(
     '/concerts',

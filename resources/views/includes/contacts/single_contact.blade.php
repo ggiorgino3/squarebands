@@ -1,5 +1,5 @@
 <div class="col-4">
-    <div class="card {{ Request::segment(1) != 'administration' ? 'bg-dark' : '' }} mx-3 my-2">
+    <div class="card {{ Request::segment(1) != 'administration' ? 'bg-dark opacity-90' : '' }} mx-3 my-2">
         <img src="https://codingyaar.com/wp-content/uploads/bootstrap-profile-card-image.jpg" class="rounded-circle mt-3" alt="Contact image">
         <div class="card-body">
             @if(Request::segment(1) == 'administration')

@@ -24,8 +24,7 @@ i.social_icon {
 
 .home_bg_img {
     background-image: url('./../assets/bg.jpeg');
-    min-height: 2500px;
-
+    min-height: 93vh;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
