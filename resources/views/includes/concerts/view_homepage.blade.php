@@ -1,4 +1,4 @@
-<a href="{{ route('concerts.show', $concert->id) }}">
+<a href="{{ route('concerts.single', $concert->id) }}">
     <h4>
         {{ $concert->name }}
     </h4>

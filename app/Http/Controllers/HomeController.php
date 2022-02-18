@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news = News::where('status', 'publish')->take(5)->get();
+        $news = News::where('status', 'publish')->orderBy('updated_at', 'DESC')->take(5)->get();
         $albums = Album::orderBy('publish_date', 'DESC')->take(3)->get();
         $nextEvents = Concert::where('datetime', '>', date("Y-m-d H:i:s"))->orderBy('datetime', 'asc')->take(3)->get();
         $latestVideos = Video::orderBy('updated_at', 'DESC')->take(2)->get();
