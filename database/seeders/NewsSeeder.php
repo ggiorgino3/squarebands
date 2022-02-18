@@ -17,7 +17,9 @@ class NewsSeeder extends Seeder
     {
         $news = News::factory()
             ->count(15)
-            ->create();
+            ->create(
+                ['status' => 'publish']
+            );
 
             $news->each(
                 function ($single_news) {

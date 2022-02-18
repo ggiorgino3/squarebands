@@ -18,6 +18,8 @@ public_html/storage
 public_html/hot
 
 storage/*.key
+storage/app/public/**
+test_songs*
 .env
 Homestead.yaml
 Homestead.json

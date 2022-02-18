@@ -6,7 +6,7 @@ echo "#  Running installation of third part dependencies with Composer  #";
 echo "#                                                                 #"
 echo "###################################################################";
 sleep 2;
-composer i
+composer u && composer i
 echo ""
 echo ""
 echo ""
@@ -31,6 +31,8 @@ echo ""
 sleep 2
 npm run dev
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+
+sail up -d
 
 echo ""
 echo ""
@@ -83,6 +85,10 @@ sail artisan tinker --execute="DB::table('options')->insert(array('visible_on_fr
 sail artisan tinker --execute="DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'spotify_url', 'meta_value' => 'https://open.spotify.com/artist/2aaLAng2L2aWD2FClzwiep'));" && echo "Done."
 sail artisan tinker --execute="DB::table('options')->insert(array('visible_on_frontend' => '0', 'title' => '', 'meta_key' => 'yt_channel', 'meta_value' => 'https://youtube.com/dreamtheater'));" && echo "100%"
 
+mkdir -p storage/app/public/songs
+
+cp -a ./test_songs/. storage/app/public/songs/
+
 
 echo ""
 echo ""
@@ -94,3 +100,4 @@ echo "#          Feeding finished successfully, visit http://127.0.0.1      #";
 echo "#                                                                     #"
 echo "#######################################################################";
 echo ""
+
