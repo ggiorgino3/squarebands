@@ -16,7 +16,7 @@ class PhotoSeeder extends Seeder
     public function run()
     {
         $url = "https://picsum.photos/v2/list";
-        $res = Http::get($url);
+        $res = Http::withOptions(['verify' => false])->get($url);
 
         $photos = $res->json();
         $new_photos = array();
