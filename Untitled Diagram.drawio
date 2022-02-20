@@ -1,31 +1,31 @@
-<mxfile host="app.diagrams.net" modified="2022-02-20T18:40:19.114Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" etag="JozRD6U0w4n_E3I5TDiT" version="16.6.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-20T18:41:54.323Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" etag="084YJamrmTEU88fdDira" version="16.6.1" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="946" dy="508" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="190" y="70" width="900" height="380" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-3" value="Logo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-3" value="Logo" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="250" y="80" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-5" value="Menu&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;Voce 1&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;Voce 2&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;Voce 3" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-5" value="Menu&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;Voce 1&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;Voce 2&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;Voce 3" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="410" y="80" width="520" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-6" value="Ultimi album pubblicati" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-6" value="Ultimi album pubblicati" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="240" y="170" width="150" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-7" value="News" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-7" value="News" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="420" y="170" width="510" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-8" value="Canzoni" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-8" value="Canzoni" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="950" y="180" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-9" value="Foto" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-9" value="Foto" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="950" y="264" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gPxDvfnhMt3YRxtjNF3b-10" value="Video" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gPxDvfnhMt3YRxtjNF3b-10" value="Video" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="950" y="350" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
