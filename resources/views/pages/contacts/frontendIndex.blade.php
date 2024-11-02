@@ -14,11 +14,12 @@
             @if($errors->any())
                 {!! implode('', $errors->all('<div>:message</div>')) !!}
             @endif
-            {{ Form::open(['route' => 'contact_us' ]) }}
+            {{ html()->form()->route('contact_us')->open() }}
             
             <div class="form-group my-2 required">
+                {{ html()->text('name', null, array('placeholder' => 'Name', 'class' =>"form-control text-white",'required' => true )) }}
                 {{ Form::label('name', 'Name', ['class' => 'px-0']) }}
-                {{ Form::text('name', Request::old('name'), ['class' =>"form-control text-white",'required' => true]) }}
+                {{ Form::text('name', Request::old('name'), []) }}
             </div>
             <div class="form-group my-2 required">
                 {{ Form::label('email', 'Email', ['class' => 'px-0']) }}
@@ -39,7 +40,7 @@
             <div class="text-end py-2">
                 {{ Form::submit('Submit form', ['name' => 'submit', 'class' => 'btn btn-success']) }}
             </div>
-            {{ Form::close() }}
+            {{ html()->form()->close() }}
         </div>
         <div class="col-2">        </div>
     </div>
