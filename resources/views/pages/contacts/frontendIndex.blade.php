@@ -4,7 +4,7 @@
         <link href="{{ asset('css/contacts_index.css') }}" rel="stylesheet">
     @endpush
     <div class="row my-2 px-4 align-content-center">
-        <div class="col-2">        </div>
+        <div class="col-2"></div>
         <div class="col-8">
             <h1>Contact Us</h1>
 
@@ -15,34 +15,34 @@
                 {!! implode('', $errors->all('<div>:message</div>')) !!}
             @endif
             {{ html()->form()->route('contact_us')->open() }}
-            
+
             <div class="form-group my-2 required">
                 {{ html()->text('name', null, array('placeholder' => 'Name', 'class' =>"form-control text-white",'required' => true )) }}
-                {{ Form::label('name', 'Name', ['class' => 'px-0']) }}
-                {{ Form::text('name', Request::old('name'), []) }}
+                {{ html()->label('name', 'Name', ['class' => 'px-0']) }}
+                {{ html()->text('name', Request::old('name'), []) }}
             </div>
             <div class="form-group my-2 required">
-                {{ Form::label('email', 'Email', ['class' => 'px-0']) }}
-                {{ Form::text('email', Request::old('email'), ['class' =>"form-control text-white",'required' => true]) }}
+                {{ html()->label('Email', 'email')->class('px-0') }}
+                {{ html()->text('email', Request::old('email'))->class('form-control text-white')->required() }}
             </div>
             <div class="form-group my-2 ">
-                {{ Form::label('phone', 'Phone', ['class' => 'px-0']) }}
-                {{ Form::text('phone', Request::old('phone'), ['class' =>"form-control text-white ",'required' => true]) }}
+                {{ html()->label('Phone', 'phone')->class('px-0') }}
+                {{ html()->text('phone', Request::old('phone'))->class('form-control text-white')->required() }}
             </div>
             <div class="form-group my-2 required">
-                {{ Form::label('subject', 'Subject', ['class' => 'px-0']) }}
-                {{ Form::text('subject', Request::old('subject'), ['class' =>"form-control text-white",'required' => true]) }}
+                {{ html()->label('subject', 'Subject')->class('px-0') }}
+                {{ html()->text('subject', Request::old('subject'))->class('form-control text-white')->required() }}
             </div>
             <div class="form-group my-2 required">
-                {{ Form::label('message', 'Message', ['class' => 'px-0']) }}
-                {{ Form::textarea('message', Request::old('message'), ['class' =>"form-control text-white",'required' => true]) }}
+                {{ html()->label('message', 'Message',)->class('px-0') }}
+                {{ html()->textarea('message', Request::old('message'))->class('form-control text-white')->required() }}
             </div>
             <div class="text-end py-2">
-                {{ Form::submit('Submit form', ['name' => 'submit', 'class' => 'btn btn-success']) }}
+                {{ html()->submit('Submit form')->name('submit')->class('btn btn-success') }}
             </div>
             {{ html()->form()->close() }}
         </div>
-        <div class="col-2">        </div>
+        <div class="col-2"></div>
     </div>
     <hr/>
     <div class="row justify-center">
