@@ -3,23 +3,23 @@
     <div class="form-group required">
         <div class="my-4">
             <div>
-                {{ Form::label('video', 'Video') }}
+                {{ html()->label('Video', 'video') }}
             </div>
             @isset($model->uri)
-            <video class="w-50 d-block rounded" loading="lazy" controls preload="metadata">
-                <source src="{{ $model->uri }}#t=4"  type="video/mp4">
-            </video>
+                <video class="w-50 d-block rounded" loading="lazy" controls preload="metadata">
+                    <source src="{{ $model->uri }}#t=4" type="video/mp4">
+                </video>
             @endisset
-            {{ Form::file('video', ['required' => 'required', 'class' => 'my-3'] ) }}
+            {{ html()->file('video' )->required()->class('my-3') }}
         </div>
     </div>
     <div class="form-group">
         <div class="my-4">
             <div class="my-2">
-                {{ Form::label('concert', 'Concert') }}
+                {{ html()->label('Concert', 'concert') }}
             </div>
             <div class="my-2">
-                {{ Form::select('concert', $concerts, Request::old('concert', isset($model) ? $model->concert_id : '')) }}
+                {{ html()->select('concert', $concerts, Request::old('concert', isset($model) ? $model->concert_id : '')) }}
             </div>
         </div>
     </div>
