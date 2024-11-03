@@ -1,7 +1,5 @@
 FROM ubuntu:22.04
 
-LABEL maintainer="Taylor Otwell"
-
 ARG WWWGROUP=1337
 ARG NODE_VERSION=20
 ARG MYSQL_CLIENT="mysql-client"
@@ -67,7 +65,11 @@ COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY .docker/php.ini /etc/php/8.3/cli/conf.d/99-sail.ini
 COPY . .
 
-RUN chmod +x /usr/local/bin/start-container
+
+RUN chmod +x /usr/local/bin/start-container && \
+    chmod g+w storage bootstrap/cache  -R && \
+    chown sail:root -R storage bootstrap/cache && \
+    composer install
 
 EXPOSE 8000
 
