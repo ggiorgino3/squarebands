@@ -7,16 +7,13 @@
     <h1>
         Edit {{ $element['title'] }} `{{ $model->name }}`
     </h1>
-    {{ html()->modelForm($model, 'PUT', $route)->open() }}
+    {{ html()->modelForm($model, 'PUT', route($route, $model->id))->open() }}
 @else
     <h1>
         Add new {{ $element['title'] }}
     </h1>
-    {{ html()->form('PUT', $route)->open()
-    //->open(
-    //['route' => $route,  'files' => true]
-    //)
-     }}
+    {{ html()->form()->route($route)->open() }}
+
 @endif
 @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>

@@ -12,9 +12,9 @@ class NewsController extends Controller
     public function frontendIndex()
     {
         return view('pages.news')
-                ->withNewses(
-                    News::where('status', 'publish')->orderBy('updated_at', 'desc')->paginate(15)
-                );
+            ->withNewses(
+                News::where('status', 'publish')->orderBy('updated_at', 'desc')->paginate(15)
+            );
     }
 
     /**
@@ -45,7 +45,7 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -59,19 +59,19 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         return view('pages.news.view')
-                ->withNews(News::find($id));
+            ->withNews(News::find($id));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,8 +90,8 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -107,7 +107,7 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -119,24 +119,24 @@ class NewsController extends Controller
     {
         switch ($statusNotBeautified) {
             case 'publish':
-            return "Published";
+                return "Published";
             case 'draft':
-            return "Draft";
+                return "Draft";
             case 'trash':
-            return "Trash";
+                return "Trash";
             default:
-            break;
+                break;
         }
     }
 
     private function insertOrUpdate(Request $request, $id = null)
     {
         $rules = array(
-            'title'       => 'required|max:150',
+            'title' => 'required|max:150',
             'description' => 'required|max:200',
             'status' => 'required|in:publish,draft,trash',
         );
-       
+
         $mandatory_fields = array(
             'title',
             'description',
@@ -149,12 +149,13 @@ class NewsController extends Controller
         } else {
             $news = new News;
         }
+
         foreach ($mandatory_fields as $model_field) {
-            $news->$model_field       = $request->input($model_field);
+            $news->$model_field = $request->input($model_field);
         }
         foreach ($optional_fields as $field) {
             if ($request->has($field)) {
-                $news->$field       = $request->input($field);
+                $news->$field = $request->input($field);
             }
         }
         $news->save();

@@ -8,12 +8,12 @@
         <h1>
             Edit contact `{{ $model->name }} {{ $model->surname }}`
         </h1>
-        {{ html()->modelForm($model, 'PUT', $route)->open() }}
+        {{ html()->modelForm($model, 'PUT', route($route, $model->id))->open() }}
     @else
         <h1>
             Add new contact
         </h1>
-        {{ html()->form('PUT', $route)->open() }}
+        {{ html()->form()->route($route)->open() }}
     @endif
 
     @if (Session::has('message'))

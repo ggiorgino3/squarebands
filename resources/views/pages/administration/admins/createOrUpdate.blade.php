@@ -4,10 +4,10 @@
         <h1>
             Edit administrator `{{ $model->name }}`
         </h1>
-        {{ html()->modelForm($model, 'PUT', $route)->open() }}
+        {{ html()->modelForm($model, 'PUT', route($route, $model->id))->open() }}
     @else
         <h1> Add new administrator </h1>
-        {{ html()->form('PUT', $route)->open() }}
+        {{ html()->form()->route($route)->open() }}
     @endif
 
     @if (Session::has('message'))

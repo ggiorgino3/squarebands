@@ -17,9 +17,8 @@
             {{ html()->form()->route('contact_us')->open() }}
 
             <div class="form-group my-2 required">
-                {{ html()->text('name', null, array('placeholder' => 'Name', 'class' =>"form-control text-white",'required' => true )) }}
-                {{ html()->label('name', 'Name', ['class' => 'px-0']) }}
-                {{ html()->text('name', Request::old('name'), []) }}
+                {{ html()->label('Name', 'name' )}}
+                {{ html()->text('name', Request::old('name'))->required()->class('form-control text-white') }}
             </div>
             <div class="form-group my-2 required">
                 {{ html()->label('Email', 'email')->class('px-0') }}
@@ -30,11 +29,11 @@
                 {{ html()->text('phone', Request::old('phone'))->class('form-control text-white')->required() }}
             </div>
             <div class="form-group my-2 required">
-                {{ html()->label('subject', 'Subject')->class('px-0') }}
+                {{ html()->label('Subject', 'subject')->class('px-0') }}
                 {{ html()->text('subject', Request::old('subject'))->class('form-control text-white')->required() }}
             </div>
             <div class="form-group my-2 required">
-                {{ html()->label('message', 'Message',)->class('px-0') }}
+                {{ html()->label('Message', 'message',)->class('px-0') }}
                 {{ html()->textarea('message', Request::old('message'))->class('form-control text-white')->required() }}
             </div>
             <div class="text-end py-2">
