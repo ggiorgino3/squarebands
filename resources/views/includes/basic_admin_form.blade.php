@@ -7,13 +7,7 @@
     <h1>
         Edit {{ $element['title'] }} `{{ $model->name }}`
     </h1>
-    {{ html()->modelForm($model, 'PUT', $route
- //[
- //       'route' => [$route, $model->id],
- //       'method' => 'put',
- //       'files' => true,
- //   ]
-    )->open() }}
+    {{ html()->modelForm($model, 'PUT', $route)->open() }}
 @else
     <h1>
         Add new {{ $element['title'] }}
