@@ -7,16 +7,22 @@
     <h1>
         Edit {{ $element['title'] }} `{{ $model->name }}`
     </h1>
-    {{ Form::model($model, [
-        'route' => [$route, $model->id],
-        'method' => 'put',
-        'files' => true,
-    ]) }}
+    {{ html()->modelForm($model, 'PUT', $route
+ //[
+ //       'route' => [$route, $model->id],
+ //       'method' => 'put',
+ //       'files' => true,
+ //   ]
+    )->open() }}
 @else
     <h1>
         Add new {{ $element['title'] }}
     </h1>
-    {{ Form::open(['route' => $route,  'files' => true]) }}
+    {{ html()->form('PUT', $route)->open()
+    //->open(
+    //['route' => $route,  'files' => true]
+    //)
+     }}
 @endif
 @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -27,17 +33,17 @@
 @endif
 <div class="form-group required">
     <div class="row mx-0 my-2">
-        {{ Form::label($element['id'], ucfirst($element['title']) . ' name', ['class' => 'px-0']) }}
+        {{ html()->label( ucfirst($element['title']) . ' name',$element['id'],)->class('px-0') }}
     </div>
     <div class="row mx-0 my-2">
-        {{ Form::text($element['id'], Request::old($element['id']), ['placeholder' => ucfirst($element['title']) . ' name...']) }}
+        {{ html()->text($element['id'], Request::old($element['id']), ['placeholder' => ucfirst($element['title']) . ' name...']) }}
     </div>
     <div class="my-2">
         <div class="row mx-0 my-2">
-            {{ Form::label('description', 'Description', ['class' => 'px-0']) }}
+            {{ html()->label('Description', 'description')->class('px-0') }}
         </div>
         <div class="row mx-0 my-2">
-            {{ Form::textarea('description', Request::old('description')) }}
+            {{ html()->textarea('description', Request::old('description')) }}
         </div>
     </div>
 </div>
@@ -45,6 +51,7 @@
 @yield("form_content")
 
 <div class="text-end py-2">
-    {{ Form::submit('Save ' . $element['title'], ['name' => 'submit', 'class' => 'btn btn-outline-success']) }}
+    {{ html()->submit('Save ' . $element['title'])->name('submit')->class('btn btn-outline-success') }}
 </div>
-{{ Form::close() }}
+
+{{ html()->form()->close() }}
