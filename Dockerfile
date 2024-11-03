@@ -65,12 +65,13 @@ COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY .docker/php.ini /etc/php/8.3/cli/conf.d/99-sail.ini
 COPY . .
 
-
 RUN chmod +x /usr/local/bin/start-container && \
     chmod g+w storage bootstrap/cache  -R && \
     chown sail:root -R storage bootstrap/cache && \
     composer install && \
-    npm i && npm run production
+    npm i && npm run production && \
+    mkdir -p storage/app/public/songs && \
+    cp -a ./test_songs/. storage/app/public/songs/
 
 EXPOSE 8000
 
