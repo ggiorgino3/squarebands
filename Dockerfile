@@ -69,7 +69,8 @@ COPY . .
 RUN chmod +x /usr/local/bin/start-container && \
     chmod g+w storage bootstrap/cache  -R && \
     chown sail:root -R storage bootstrap/cache && \
-    composer install
+    composer install && \
+    npm i && npm run production
 
 EXPOSE 8000
 
